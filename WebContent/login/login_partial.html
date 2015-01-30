@@ -1,0 +1,52 @@
+<div class="startContainer">
+	<a href="#"><div ng-class="{loginBox:showGuest,startEntity:!showGuest}" ng-mouseenter="setGuest()" ng-mouseleave="setGuest()">
+		Guest Login
+	</div></a><br>
+	<div ng-class="{loginBox:showLogin,startEntity:!showLogin}" ng-mouseenter="setLogin()" ng-mouseleave="setLogin()">
+		Login
+		<form ng-show="showLogin" ng-submit="login()" name="login" novalidate>
+			<input type="text" class="loginInp" ng-model="user.username" name="username" placeholder="Username" required=""/><br>
+			<div ng-show="login.$submitted || login.username.$touched">
+				<div class="loginError" ng-show="login.username.$error.required"> Let us know who you are !</div>
+			</div>
+			<input type="password" class="loginInp" name="password" ng-model="user.password" placeholder="Password" required=""/><br>
+			<div ng-show="login.$submitted || login.username.$touched">
+				<div class="loginError" ng-show="login.password.$error.required"> <a href="#">Forgot Your Password?</a></div>
+			</div>
+			<input class="loginBtn" type="submit" value="Login"/> <input class="loginBtn" type="reset" value="Cancel"/><br>
+		</form>
+	</div><br>
+	<div ng-class="{loginBox:showSignup,startEntity:!showSignup}" name="signup" ng-mouseenter="setSignup()" ng-mouseleave="setSignup()">
+		Signup
+		<form name="signup" ng-submit="signup()" class="css-form" ng-show="showSignup" novalidate>
+			<input type="text" class="loginInp" ng-model="nuser.fullname" name="name" placeholder="Full Name" required=""/><br>
+			<div ng-show="signup.$submitted || signup.name.$touched">
+				<div class="loginError" ng-show="signup.name.$error.required"> Let us know who you are !</div>
+			</div>
+			<input type="text" class="loginInp" ng-model="nuser.college" name="college" placeholder="Institute" required=""/><br>
+			<div ng-show="signup.$submitted || signup.college.$touched">
+				<div class="loginError" ng-show="signup.college.$error.required"> Let us know where you are from !</div>
+			</div>
+			<input type="text" class="loginInp" ng-model="nuser.nusername" name="username" placeholder="Username" required=""/><br>
+			<div ng-show="signup.$submitted || signup.username.$touched">
+				<div class="loginError" ng-show="signup.username.$error.required"> Let us know what username you like !</div>
+			</div>
+			<input type="email" class="loginInp" ng-model="nuser.email" name="email" placeholder="Valid Email-ID" required=""/><br>
+			<div ng-show="signup.$submitted || signup.email.$touched">
+				<div class="loginError" ng-show="signup.email.$error.required"> Let us know contact Details !</div>
+				<div class="loginError" ng-show="signup.email.$error.email"> Let us know your proper contact Details !</div>
+			</div>
+			<input type="password" class="loginInp" ng-model="nuser.npassword" name="pass" placeholder="Password" required=""/><br>
+			<div ng-show="signup.$submitted || signup.pass.$touched">
+				<div class="loginError" ng-show="signup.pass.$error.required"> Don't forget your Password !</div>
+			</div>
+			<input type="password" class="loginInp" ng-model="nuser.rnpassword" name="newpass"placeholder="Retype-Password" required=""/><br>
+			<div ng-show="signup.$submitted || signup.newpass.$touched">
+				<div class="loginError" ng-show="signup.newpass.$error.required"> Confirm your Password !</div>
+				<div class="loginError" ng-show="npassword===rnpassword"> Your Passwords does not match</div>
+			</div>
+			<input class="loginBtn" type="submit" ng-click="signup()" value="SignUp"/> <input class="loginBtn" type="reset" value="Cancel"/><br>
+		</form>
+	</div><br>
+</div>
+<!-- sidebar images sponcers -->
