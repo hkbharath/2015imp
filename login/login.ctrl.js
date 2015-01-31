@@ -1,6 +1,6 @@
 (function(){
 	angular.module('login',['impetus.serv'])
-		.controller('loginPage',function($rootScope,$scope,$interval){
+		.controller('loginPage',function($rootScope,$scope,$interval,$http){
 			$scope.showLogin = false;
 			$scope.showSignup = false;
 			$scope.showGuest = false;

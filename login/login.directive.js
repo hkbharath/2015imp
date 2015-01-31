@@ -1,26 +1,29 @@
 (function(){
 	angular.module('login')
-		.directive('username',function($q){
+		.directive('username',function($q,$http){
 			return{
 				require:'ngModel',
 				link:function(scope,ele,attr,ctrl){
-					ctrl.$asyncValidator.user = function(modelValue,viewValue){
+					ctrl.$asyncValidators.username = function(modelValue,viewValue){
 						if(ctrl.$isEmpty(modelValue)){
 							return $q.when();
 						}
 						var res = $q.defer();
 						/* check this */
-						$http.post('checkUser.php',{'username':modelValue})
-							.success(function(data){
-								if(data.ok == true)
+						$http.post('src/checkUser.php',{user:modelValue})
+						.success(function(data,status){
+								console.log("data :"+data.type);
+								if(data.type == true)
 									res.resolve();
 								else
 									res.reject();
 							})
 							.error(function(e){
+								console.log("Error : "+e);
 								res.reject();
 							});
 						return res.promise;
+						
 					}
 				}
 			}

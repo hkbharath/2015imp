@@ -27,10 +27,12 @@
 			<div ng-show="signup.$submitted || signup.college.$touched">
 				<div class="loginError" ng-show="signup.college.$error.required"> Let us know where you are from !</div>
 			</div>
-			<input type="text" class="loginInp" ng-model="nuser.nusername" name="username" placeholder="Username" required=""/><br>
+			<input type="text" class="loginInp" ng-model="nuser.nusername" name="username" placeholder="Username" required="" username/><br>
 			<div ng-show="signup.$submitted || signup.username.$touched">
 				<div class="loginError" ng-show="signup.username.$error.required"> Let us know what username you like !</div>
 			</div>
+			<div class="loginError" ng-show="signup.username.$pending.username"> Checking availability. .</div>
+			<div class="loginError" ng-show="signup.username.$error.username"> Choose other username </div>
 			<input type="email" class="loginInp" ng-model="nuser.email" name="email" placeholder="Valid Email-ID" required=""/><br>
 			<div ng-show="signup.$submitted || signup.email.$touched">
 				<div class="loginError" ng-show="signup.email.$error.required"> Let us know contact Details !</div>
