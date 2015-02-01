@@ -16,4 +16,6 @@
 		$result["type"] = true;
 	}
 	echo json_encode($result);
+	$db->destroyAgent();
+	$db = null;
 ?>

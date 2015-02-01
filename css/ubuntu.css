@@ -1,12 +1,12 @@
 /****
 	*	author : hkbharath
 	*/
-body {
-	background: url("../img/background.jpg") no-repeat transparent; 
-	padding:0px;
-	margin:0px;
-	height:100%;
+html {
+	background: url("../img/background.jpg") no-repeat center center fixed; 
 	background-size: cover;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
 }
 
 a{
@@ -25,6 +25,9 @@ a:hover, a:focus{
 	height:30px;
 	background:url("../img/top-bar.png") no-repeat scroll 0% 0% transparent;
 	background-size:cover;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
 	float : left;
 }
 
@@ -48,6 +51,9 @@ a:hover, a:focus{
 	width:270px;
 	background:url("../img/login-box.png") no-repeat scroll 0% 0%;
 	background-size:cover;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
 	float:left;
 	font-size:20px;
 	color:#D7BCBC;
@@ -62,6 +68,9 @@ input.loginInp{
 	width:95%;
 	background:url("../img/login-input.png") no-repeat scroll 0% 0%;
 	background-size:cover;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
 	color:#D7BCBC;
 	float:left;
 }
@@ -127,4 +136,23 @@ button{
 	font-size:12px;
 	color: #D7BCBC;
 	padding: 2px;
+}
+
+.folderContainer{
+	float:left;
+	width:25%;
+	margin:0% 0% 0% 5%;
+}
+.folder{
+	height: 120px;
+	margin: 20px 10px;
+	padding: 5px 10px;
+	float:left;
+}
+
+.folderName{
+	font-size:14px;
+	text-align:center;
+	width:75px;
+	color:rgba(223,219,211,100);
 }

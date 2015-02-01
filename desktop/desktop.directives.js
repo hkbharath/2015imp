@@ -1,15 +1,14 @@
 (function(){
-	angular.module('imp.desktop')
-		.directive('impetusDraggable', function($document){
+	angular.module('desktop')
+		.directive('impetusFolder', function($document){
 			return {
 		        restrict: 'A',
 		        scope:{
 		        	title: '='
 		        },
-		        template: '<div ng-transclude></div>',
-		        transclude:true,
-		        link: function(scope, ele, attr) {
-		          var startX = 0, startY = 0, x = scope.image.x || 0, y = scope.image.y || 0;
+		        template: '<img src="img/folder-icon.png" style="height:75px;"><div class="folderName">{{title}}</div>',
+		        link: function(scope, element, attr) {
+		          var startX = 0, startY = 0, x = 0, y =  0;
 		 
 			      element.css({
 			       position: 'relative',
@@ -39,7 +38,7 @@
 			        $document.unbind('mouseup', mouseup);
 			      }
 			      /* check this functionality */
-			      ele.on("click",function(){
+			      element.on("click",function(){
 			    	 scope.apply(function(){$location.path('/desktop/'+title)}) 
 			      });
 		        }

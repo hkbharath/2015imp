@@ -1,5 +1,5 @@
 (function(){
-	angular.module('impetus',['ngRoute','login'])
+	angular.module('impetus',['ngRoute','login','desktop'])
 		.config(function($routeProvider){
 			$routeProvider
 				.when('/',{
@@ -9,6 +9,10 @@
 				.when('/login',{
 					templateUrl:'login/login_partial.html',
 					controller:'loginPage'
+				})
+				.when('/desktop',{
+					templateUrl:'desktop/desktop_partials.html',
+					controller:'desktopPage'
 				})
 		})
 		
