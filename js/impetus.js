@@ -28,9 +28,19 @@
 			$scope.$on('$destroy',function(){
 				$interval.cancel(t);
 				t = undefined;
-			})
+			});
 			$rootScope.pageTitle = "Impetus !5";
 			$rootScope.headText = "Impetus !5";
+			$scope.showSetup = function(){
+				
+			};
+			
+			$scope.showProfile = function(){
+				
+			};
+			
+			$scope.showCalender = function(){
+			};
 		})
 		/* Title Controller Uses Services */
 		.controller('title',function($scope){

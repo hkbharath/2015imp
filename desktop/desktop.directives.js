@@ -1,6 +1,6 @@
 (function(){
 	angular.module('desktop')
-		.directive('impetusFolder', function($document){
+		.directive('impetusFolder', function($document,$location){
 			return {
 		        restrict: 'A',
 		        scope:{
@@ -39,7 +39,7 @@
 			      }
 			      /* check this functionality */
 			      element.on("click",function(){
-			    	 scope.apply(function(){$location.path('/desktop/'+title)}) 
+			    	 scope.$apply(function(){$location.path('/desktop/'+scope.title)}) 
 			      });
 		        }
 		    }

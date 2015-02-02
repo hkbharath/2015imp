@@ -1,4 +1,8 @@
 <?php
+	/*
+	 * returns {'type':true/false} based on availbility
+	 */
+
 	header("Content-Type:application/json");
 	include("dbsetting.php");
 	$result = array("type"=>false);

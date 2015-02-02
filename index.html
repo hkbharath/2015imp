@@ -13,7 +13,7 @@
 	<div class="setup" ng-click="showSetup()">
 	
 	</div>
-	<div class="time" ng-click="showcalender()">
+	<div class="time" ng-click="showCalender()">
 		{{time | date:'medium'}}
 	</div>
 	<div class="profile" ng-click="showProfile()"></div>
@@ -25,12 +25,15 @@
 <div class="footer">
 </div>
 <!-- css and js -->
-<script src="js/common/angular.js"></script>
+
+<!-- <script src="js/common/angular.js"></script> -->
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.1/angular.min.js"></script>
 <script src="js/common/angular-route.min.js"></script>
 <script src="js/common/jquery.js"></script>
 
 <script src="js/appServices.js"></script>
 <script src="login/login.ctrl.js"></script>
+<script src="login/login.serv.js"></script>
 <script src="login/login.directive.js"></script>
 <script src="desktop/desktop.ctrl.js"></script>
 <script src="desktop/desktop.directives.js"></script>

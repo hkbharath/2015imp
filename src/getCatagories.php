@@ -1,4 +1,8 @@
 <?php
+/*
+ * return list of catagories in the db
+ */
+
 include_once 'dbsetting.php';
 header("Content-Type:application/json");
 class category{
