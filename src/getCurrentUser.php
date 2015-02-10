@@ -14,6 +14,6 @@ if(isset($_SESSION)){
 	echo json_encode($_SESSION);
 }
 else{
-	echo json_encode(array("user"=>"Guest","name"=>"Guest","privilage"=>"guest"));
+	echo json_encode(array("user"=>"guest","name"=>"guest","privilage"=>"guest"));
 }
 ?>

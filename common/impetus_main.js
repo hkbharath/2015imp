@@ -1,0 +1,11 @@
+(function(){
+	angular.module('impetus',['ngRoute',
+	                          'startPage'])
+		.config(function($routeProvider){
+			$routeProvider
+				.when('/',{
+					templateUrl:'start/start.animation.partial.html',
+					controller:'startCtrl'
+				})
+		})
+})();

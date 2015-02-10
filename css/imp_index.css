@@ -1,0 +1,289 @@
+/*
+ * imp_index.css developed for Impetus15, UVCE
+ * developed by Web Design Team IEEE UVCE
+ */
+ 
+html{
+	background:rgba(0,0,0,1) url('../images/background.png') no-repeat center center fixed;
+	background-size: cover;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	overflow:hidden;
+}
+
+
+@-webkit-keyframes outer{
+	from { -weblit-transform:rotateZ(0deg);}
+	to { -webkit-transform:rotateZ(-360deg);}	
+}
+@keyframes outer{
+	from {
+		-moz-transform:rotateZ(0deg);
+		-ms-transform:rotateZ(0deg);
+		transform:rotateZ(0deg);
+	}
+	to {
+		-moz-transform:rotateZ(-360deg);
+		-ms-transform:rotateZ(-360deg);
+		transform:rotateZ(-360deg);
+	}
+}
+
+@-webkit-keyframes inner{
+	from { -webkit-transform:rotateZ(-360deg);}
+	to { -weblit-transform:rotateZ(0deg);}	
+}
+@keyframes inner{
+	from {
+		-moz-transform:rotateZ(-360deg);
+		-ms-transform:rotateZ(-360deg);
+		transform:rotateZ(-360deg);
+	}
+	to {
+		-moz-transform:rotateZ(0deg);
+		-ms-transform:rotateZ(0deg);
+		transform:rotateZ(0deg);
+	}
+}
+
+
+#space{
+	perspective: 1000px;
+	-webkit-perspective: 1000px;
+	-moz-perspective: 1000px;
+	-o-perspective: 1000px;
+	-ms-perspective: 1000px;
+	
+	perspective-origin: 50% 50%;
+	-webkit-perspective-origin: 50% 50%;
+	-moz-perspective-origin: 50% 50%;
+	-o-perspective-origin: 50% 50%;
+	-ms-perspective-origin: 50% 50%;
+	
+}
+
+#container{
+	position:relative;
+	margin:5% 25%;
+	width:600px;
+	height:600px;
+	
+	animation-name:outer;
+	animation-timing-function:linear;
+	animation-iteration-count:infinite;
+	animation-duration:20s;
+	
+	-webkit-animation-name:outer;
+	-webkit-animation-timing-function:linear;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-duration:20s;
+	
+	transition : transform 1s linear;
+	-webkit-transition : -webkit-transform 1s linear;
+	-moz-transition : -moz-transform 1s linear;
+	-ms-transition : -ms-transform 1s linear;
+	-o-transition : -o-transform 1s linear;
+	
+	transform-style:preserve-3d;
+	-webkit-transform-style:preserve-3d;
+	-moz-transform-style:preserve-3d;
+	-ms-transform-style:preserve-3d;
+	-o-transform-style:preserve-3d;
+}
+#container:hover{
+	-webkit-animation-play-state:paused;
+	animation-play-state:paused;
+}
+
+.central{
+	position:absolute;
+	top:35%;
+	left:35%;
+	background: url('../images/centre.png') no-repeat scroll 0% 0% / cover transparent;
+	width:30%;
+	height:30%;
+	border-radius:50%;
+	
+	animation-name:inner;
+	animation-timing-function:linear;
+	animation-iteration-count:infinite;
+	animation-duration:20s;
+	
+	-webkit-animation-name:inner;
+	-webkit-animation-timing-function:linear;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-duration:20s;
+}
+
+.central:hover{
+		background: url('../images/centre.png') no-repeat scroll 0% 0% / cover transparent;
+}
+
+.guestSpeaker{
+	position:absolute;
+	top:7.143%;
+	left:50%;
+	transform-origin:0% 100%;
+	-webkit-transform-origin:0% 100%;
+	-moz-transform-origin:0% 100%;
+	-o-transform-origin:0% 100%;
+	-ms-transform-origin:0% 100%;
+	width:61%;
+	height:42.857%;
+	background: url('../images/item-guest-speaker.png') no-repeat scroll 0% 0% / cover transparent;
+}
+.guestSpeaker:hover{
+	background: url('../images/item-hover-guest-speakers.png') no-repeat scroll 0% 0% / cover transparent;	
+}
+
+.sponcers{
+	position:absolute;
+	top:12.15%;
+	left:50%;
+	transform-origin:0% 100%;
+	-webkit-transform-origin:0% 100%;
+	-moz-transform-origin:0% 100%;
+	-o-transform-origin:0% 100%;
+	-ms-transform-origin:0% 100%;
+	width:54%;
+	height:37.85%;
+	background: url('../images/item-sponcers.png') no-repeat scroll 0% 0% / cover transparent;
+	transform:rotateZ(-45deg) ;
+	-webkit-transform:rotateZ(-45deg) ;
+	-moz-transform:rotateZ(-45deg) ;
+	-ms-transform:rotateZ(-45deg) ;
+	-o-transform:rotateZ(-45deg) ;
+}
+
+.sponcers:hover{
+	background: url('../images/item-hover-sponcers.png') no-repeat scroll 0% 0% / cover transparent;
+}
+
+.events{
+	position:absolute;
+	top:17.857%;
+	left:50%;
+	transform-origin:0% 100%;
+	-webkit-transform-origin:0% 100%;
+	-moz-transform-origin:0% 100%;
+	-o-transform-origin:0% 100%;
+	-ms-transform-origin:0% 100%;
+	width:46%;
+	height:32.143%;
+	background: url('../images/item-events.png') no-repeat scroll 0% 0% / cover transparent;
+	transform:rotateZ(-90deg) ;
+	-webkit-transform:rotateZ(-90deg) ;
+	-moz-transform:rotateZ(-90deg) ;
+	-ms-transform:rotateZ(-90deg) ;
+	-o-transform:rotateZ(-90deg) ;
+}
+.events:hover{
+	background: url('../images/item-hover-events.png') no-repeat scroll 0% 0% / cover transparent;
+}
+.exhibition{
+	position:absolute;
+	top:14.29%;
+	left:50%;
+	transform-origin:0% 100%;
+	-webkit-transform-origin:0% 100%;
+	-moz-transform-origin:0% 100%;
+	-o-transform-origin:0% 100%;
+	-ms-transform-origin:0% 100%;
+	width:51%;
+	height:35.71%;
+	background: url('../images/item-exhibition.png') no-repeat scroll 0% 0% / cover transparent;
+	transform:rotateZ(-135deg) ;
+	-webkit-transform:rotateZ(-135deg) ;
+	-moz-transform:rotateZ(-135deg) ;
+	-ms-transform:rotateZ(-135deg) ;
+	-o-transform:rotateZ(-135deg) ;
+}
+.exhibition:hover{
+	background: url('../images/item-hover-exhibition.png') no-repeat scroll 0% 0% / cover transparent;
+}
+.calendar{
+	position:absolute;
+	top:16.43%;
+	left:50%;
+	transform-origin:0% 100%;
+	-webkit-transform-origin:0% 100%;
+	-moz-transform-origin:0% 100%;
+	-o-transform-origin:0% 100%;
+	-ms-transform-origin:0% 100%;
+	width:48%;
+	height:33.57%;
+	background: url('../images/item-calendar.png') no-repeat scroll 0% 0% / cover transparent;
+	transform:rotateZ(-180deg) ;
+	-webkit-transform:rotateZ(-180deg) ;
+	-moz-transform:rotateZ(-180deg) ;
+	-ms-transform:rotateZ(-180deg) ;
+	-o-transform:rotateZ(-180deg) ;
+}
+.calendar:hover{
+	background: url('../images/item-hover-calendar.png') no-repeat scroll 0% 0% / cover transparent;
+}
+.workshops{
+	position:absolute;
+	top:10.72%;
+	left:50%;
+	transform-origin:0% 100%;
+	-webkit-transform-origin:0% 100%;
+	-moz-transform-origin:0% 100%;
+	-o-transform-origin:0% 100%;
+	-ms-transform-origin:0% 100%;
+	width:56%;
+	height:39.28%;
+	background: url('../images/item-workshops.png') no-repeat scroll 0% 0% / cover transparent;
+	transform:rotateZ(-225deg) ;
+	-webkit-transform:rotateZ(-225deg) ;
+	-moz-transform:rotateZ(-225deg) ;
+	-ms-transform:rotateZ(-225deg) ;
+	-o-transform:rotateZ(-225deg) ;
+}
+.workshops:hover{
+	background: url('../images/item-hover-workshops.png') no-repeat scroll 0% 0% / cover transparent;
+}
+.contactUs{
+	position:absolute;
+	top:21.429%;
+	left:50%;
+	transform-origin:0% 100%;
+	-webkit-transform-origin:0% 100%;
+	-moz-transform-origin:0% 100%;
+	-o-transform-origin:0% 100%;
+	-ms-transform-origin:0% 100%;
+	width:41%;
+	height:28.571%;
+	background: url('../images/item-mail.png') no-repeat scroll 0% 0% / cover transparent;
+	transform:rotateZ(-270deg) ;
+	-webkit-transform:rotateZ(-270deg) ;
+	-moz-transform:rotateZ(-270deg) ;
+	-ms-transform:rotateZ(-270deg) ;
+	-o-transform:rotateZ(-270deg) ;
+}
+.contactUs:hover{
+	background: url('../images/item-hover-contact-us.png') no-repeat scroll 0% 0% / cover transparent;
+}
+.gallery{
+	position:absolute;
+	top:16.43%;
+	left:50%;
+	transform-origin:0% 100%;
+	-webkit-transform-origin:0% 100%;
+	-moz-transform-origin:0% 100%;
+	-o-transform-origin:0% 100%;
+	-ms-transform-origin:0% 100%;
+	width:48%;
+	height:33.57%;
+	background: url('../images/item-gallery.png') no-repeat scroll 0% 0% / cover transparent;
+	transform:rotateZ(-315deg) ;
+	-webkit-transform:rotateZ(-315deg) ;
+	-moz-transform:rotateZ(-315deg) ;
+	-ms-transform:rotateZ(-315deg) ;
+	-o-transform:rotateZ(-315deg) ;
+}
+.gallery:hover{
+	background: url('../images/item-hover-gallery.png') no-repeat scroll 0% 0% / cover transparent;
+	
+}

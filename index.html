@@ -2,47 +2,14 @@
 <html ng-app="impetus">
 <head>
 <meta charset="ISO-8859-1">
-<title ng-controller="title">{{pageTitle}}</title>
+<title>{{titleText}}</title>
 </head>
 <body>
-<!-- top bar -->
-<div class="topBar" ng-controller="topBar">
-	<a href="#" class="headText">
-		{{headText}}
-	</a>
-	<div class="setup" ng-click="showSetup()">
-	
-	</div>
-	<div class="time" ng-click="showCalender()">
-		{{time | date:'medium'}}
-	</div>
-	<div class="profile" ng-click="showProfile()"></div>
-</div>
-
-<!-- login box -->
 <div ng-view></div>
-<!-- footer image -->
-<div class="footer">
-</div>
-<!-- css and js -->
+<script src="common/angular.min.js"></script>
+<script src="common/angular-route.min.js"></script>
 
-<!-- <script src="js/common/angular.js"></script> -->
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.1/angular.min.js"></script>
-<script src="js/common/angular-route.min.js"></script>
-<script src="js/common/jquery.js"></script>
-
-<script src="js/appServices.js"></script>
-<script src="login/login.ctrl.js"></script>
-<script src="login/login.serv.js"></script>
-<script src="login/login.directive.js"></script>
-<script src="desktop/desktop.ctrl.js"></script>
-<script src="desktop/desktop.directives.js"></script>
-<script src="js/impetus.js"></script>
-
-<link href="css/bootstrap.min.css" type="text/css" rel="stylesheet"></link>
-<link href="css/ubuntu.css" type="text/css" rel="stylesheet"></link>
-<script type="text/javascript">
-
-</script>
+<script src="start/startPage.js"></script>
+<script src="common/impetus_main.js"></script>
 </body>
 </html>
