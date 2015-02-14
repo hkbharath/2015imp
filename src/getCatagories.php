@@ -4,6 +4,7 @@
  */
 
 include_once 'dbsetting.php';
+include_once 'debugger.php';
 header("Content-Type:application/json");
 class category{
 	var $title;
@@ -20,7 +21,8 @@ $value = mysqli_query($link, $query);
 
 if(mysqli_errno($link)!=0){
 	echo json_encode(array("error"=>"No Catagories to Display"));
-	die("Problem after executing : "+$query);	
+	debug('database link not found : '.mysqli_errno(),'getCatagory');
+	die("Problem after executing : "+$query);
 }
 
 while($newrow = mysqli_fetch_assoc($value)){
@@ -33,4 +35,3 @@ while($newrow = mysqli_fetch_assoc($value)){
 echo json_encode($result);
 
 ?>
-

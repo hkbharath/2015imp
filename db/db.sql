@@ -1,6 +1,4 @@
-create database if not exists impetus;
-
-use impetus;
+--create table before running this
 
 create table if not exists imp_users(
 	name varchar(256) not null,
@@ -14,13 +12,14 @@ create table if not exists imp_users(
 
 
 create table if not exists imp_catagories(
-	name varchar(50) primary key,
+	id int primary key,
+	name varchar(50),
 	pic_path varchar(256)
 );
 
 create table if not exists imp_events(
 	title varchar(50) primary key,
-	catagory varchar(50) references imp_catagories.name on update cascade on delete cascade,
+	catagory int references imp_catagories.name on update cascade on delete cascade,
 	pic_path varchar(256),
 	content mediumtext not null,
 	postdby varchar(256) references imp_users.username on update cascade on delete cascade,
@@ -54,5 +53,14 @@ create table if not exists imp_logs(
 	resolved boolean default false
 );
 
-insert into imp_users values('admin','admin','setthisadmin','admin@localhost.com','UVCE');
-insert into imp_users values('guest','guest','','','UVCE');
+insert into imp_users values('admin','admin','setthisadmin','admin@localhost.com','UVCE','admin');
+insert into imp_users values('guest','guest','','a@a.a','UVCE','guest');
+
+insert into imp_catagories values(1,'guest speakers','');
+insert into imp_catagories values(2,'sponcers','');
+insert into imp_catagories values(3,'events','');
+insert into imp_catagories values(4,'exhibitions','');
+insert into imp_catagories values(5,'calender','');
+insert into imp_catagories values(6,'workshops','');
+insert into imp_catagories values(7,'contact us','');
+insert into imp_catagories values(8,'gallery','');

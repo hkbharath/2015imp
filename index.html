@@ -5,11 +5,31 @@
 <title>{{titleText}}</title>
 </head>
 <body>
-<div ng-view></div>
-<script src="common/angular.min.js"></script>
-<script src="common/angular-route.min.js"></script>
 
+<div class='notification' notify></div>
+<div ng-include="'start/loading.animation.partial.html'" id="st_loading" style="width:100%;height:100%;background-color:black;color:white;z-index:9999;float:left;margin:-10%;background-size:cover"></div>
+
+<div ng-include="'start/start.animation.partial.html'"></div>
+
+<script src="common/jquery.js"></script>
+
+<script type="text/javascript">
+
+$(window).on('load',function(){
+	$("#st_loading").fadeOut();
+})
+
+</script>
+<script src="common/angular.min.js"></script>
+
+<script type="text/javascript" src="login/login.ctrl.js"></script>
+<script type="text/javascript" src="login/login.directive.js"></script>
+<script type="text/javascript" src="login/login.serv.js"></script>
 <script src="start/startPage.js"></script>
 <script src="common/impetus_main.js"></script>
+<script type="text/javascript">
+
+</script>
+
 </body>
 </html>
