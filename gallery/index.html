@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="../common/jquery.js"></script>
+	<script type="text/javascript" src="../common/jquery.jscrollpane.min.js"></script>
+	<script type="text/javascript" src="../common/jquery.mousewheel.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/jquery.jscrollpane.css">
+
+	<style type="text/css">
+#ga_wrapper{
+	position: absolute;
+	margin: 0% 10%;
+	padding: 3%;
+	height: 50%;
+	width:80%;
+}
+
+.ga_container{
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+	</style>
+</head>
+
+<body>
+<div id='ga_wrapper'>
+		<div class='ga_container'>
+			
+		</div>
+</div>
+	<script type="text/javascript">
+	$(function()
+	{
+		var settings = {
+			showArrows: true
+		};
+		var pane = $('.ga_container')
+		pane.jScrollPane(settings);
+		var api = pane.data('jsp');
+		var i = 1;
+
+		// Every second add some new content...
+		setInterval(
+			function()
+			{
+				api.getContentPane().append(
+					$('<p />').text('This is paragraph number ' + i++)
+				);
+				// we could call "pane.jScrollPane(settings)" again but it is
+				// more convenient to call via the API as then the original
+				// settings we passed in are automatically remembered.
+				api.reinitialise();
+			},
+			1000
+		);
+	});
+
+	
+	</script>
+</body>
+</html>

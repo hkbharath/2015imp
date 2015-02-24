@@ -1,0 +1,84 @@
+a{
+	color: #D7BCBC;
+	text-decoration:none;
+}
+a:hover, a:focus{
+	color: #D7BCBC;;
+	text-decoration:none;
+}
+
+.startContainer{
+	margin:15% 0% 0% 6%;
+	padding:2% 2%;
+	float:left;
+}
+
+.startEntity{
+	margin:0px;
+	padding: 3% 8%;
+	font-size:20px;
+	color:#D7BCBC;
+}
+
+.loginBox{
+	padding:3% 8%;
+	border: 1px solid grey;
+	border-radius:8px;
+	width:270px;
+	background:url("../images/login-box.png") no-repeat scroll 0% 0%;
+	background-size:cover;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+	float:left;
+	font-size:20px;
+	color:#D7BCBC;
+}
+
+input.loginInp{
+	padding:2% 5%;
+	margin: 1% 0px;
+	border: 1px solid grey;
+	border-radius:5px;
+	font-size:14px;
+	width:95%;
+	background:url("../images/login-input.png") no-repeat scroll 0% 0%;
+	background-size:cover;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+	color:#D7BCBC;
+	float:left;
+}
+
+
+/* edit */
+
+.loginBtn{
+	margin:3% 10% 3% 0%;
+	padding:3% 6%;
+	font-size:16px;
+	color: #D7BCBC;
+	background:url("../images/login-box.png") no-repeat scroll 0% 0% transparent;
+	border-radius:10px;
+	border: 1px solid #B3878E;
+	float:left;
+	text-decoration: none;
+	text-align:center;
+	vertical-align:middle;
+}
+
+.loginBtn:hover, .loginBtn:focus{
+    border: 1px solid #501A28;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05) inset, 0px 0px 30px #A5544B;
+}
+
+button{
+	display:inline-block;
+}
+
+.loginError{
+	font-size:12px;
+	color: #D7BCBC;
+	padding: 2px;
+}

@@ -1,0 +1,33 @@
+/*
+ * imp_index.css developed for Impetus15, UVCE
+ * developed by Web Design Team IEEE UVCE
+ */
+ 
+html{
+	background:rgba(0,0,0,1) url('../images/background.png') no-repeat center center fixed;
+	background-size: cover;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	overflow:hidden;
+}
+
+@font-face{
+	font-family: alienlang;
+	src:url(alienleagueexpand.ttf);
+}
+
+.st_soc_icon_container{
+	position:absolute;
+	top:50%;
+	left:36%;
+	padding:1%;
+	margin:1%;
+}
+
+.st_soc_icon{
+	float:left;
+	width:10%;
+	height:10%;
+	margin: 2%;
+}
