@@ -24,8 +24,8 @@ if($_SERVER['REQUEST_METHOD']=="GET"){
 
 	if(mysqli_errno($link)!=0){
 		echo json_encode(array("error"=>"No Catagories to Display"));
-		debug('database link not found : '.mysqli_errno(),'getCatagory');
-		die("Problem after executing : "+$query);
+		debug('could not connect to database : '.mysqli_errno().'getCatagory');
+		die("Problem !!");
 	}
 
 	while($newrow = mysqli_fetch_assoc($value)){

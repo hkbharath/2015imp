@@ -80,7 +80,8 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
                     icon.stop().animate({opacity:1}, ms, "elastic");
                 }).click(function(){
                     $('#st_space').hide('slide',{direction:"left"},hideT);
-                     console.log($('#st_'+name.split(' ')[0]));
+                    //console.log($('#st_'+name.split(' ')[0]));
+                    pagnav.openNewPage('st_'+name.split(' ')[0]);
                     $('#st_'+name.split(' ')[0]).fadeIn(2*hideT,function(){
                         $(this).trigger('visibleNow');
                     });
@@ -98,8 +99,11 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
                     icon.stop().animate({opacity:1}, 0, "elastic");
                 }).click(function(){
                     $('#st_space').hide('slide',{direction:"left"},hideT);
-                    console.log(name.split(' ')[0]);
-                    $('#st_'+name.split(' ')[0]).fadeIn(2*hideT);
+                    //console.log(name.split(' ')[0]);
+                    pagnav.openNewPage('st_'+name.split(' ')[0]);
+                    $('#st_'+name.split(' ')[0]).fadeIn(2*hideT,function(){
+                        $(this).trigger('visibleNow');
+                    });
                 });
 
                 txt.mouseover(function(){
@@ -114,7 +118,11 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
                     icon.stop().animate({opacity:1}, 0, "elastic");
                 }).click(function(){
                     $('#st_space').hide('slide',{direction:"left"},hideT);
-                    $('#st_'+name.split(' ')[0]).fadeIn(2*hideT)
+                   
+                    pagnav.openNewPage('st_'+name.split(' ')[0]);
+                    $('#st_'+name.split(' ')[0]).fadeIn(2*hideT,function(){
+                        $(this).trigger('visibleNow');
+                    });
                 });
                 putfront();
             }

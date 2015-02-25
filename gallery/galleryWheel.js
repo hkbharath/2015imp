@@ -81,9 +81,12 @@ Raphael.fn.sideWheel = function (cx, cy, r, values, labels, stroke,dist) {
                         txt.stop().animate({opacity: 0}, ms);
                         icon.stop().animate({opacity:1}, ms, "elastic");
                     }).click(function(){
-                        $('#st_gallery').hide('slide',{direction:"left"},hideT);
+                        $('#'+pagnav.getCurrPage()).hide('slide',{direction:"left"},hideT);
                         // console.log($('#st_'+name.split(' ')[0]));
-                        $('#'+labels[j].target_div).fadeIn(2*hideT);
+                        pagnav.openNewPage(labels[j].target_div);
+                        $('#'+labels[j].target_div).fadeIn(2*hideT,function(){
+                            $(this).trigger('visibleNow');
+                        });
                     });
 
                     icon.mouseover(function(){
@@ -97,9 +100,12 @@ Raphael.fn.sideWheel = function (cx, cy, r, values, labels, stroke,dist) {
                         txt.stop().animate({opacity: 0}, 0);
                         icon.stop().animate({opacity:1}, 0, "elastic");
                     }).click(function(){
-                        $('#st_gallery').hide('slide',{direction:"left"},hideT);
+                        $('#'+pagnav.getCurrPage()).hide('slide',{direction:"left"},hideT);
                         //console.log(name.split(' ')[0]);
-                        $('#'+labels[j].target_div).fadeIn(2*hideT);
+                        pagnav.openNewPage(labels[j].target_div);
+                        $('#'+labels[j].target_div).fadeIn(2*hideT,function(){
+                            $(this).trigger('visibleNow');
+                        });
                     });
 
                     txt.mouseover(function(){
@@ -113,9 +119,12 @@ Raphael.fn.sideWheel = function (cx, cy, r, values, labels, stroke,dist) {
                         txt.stop().animate({opacity: 0}, 0);
                         icon.stop().animate({opacity:1}, 0, "elastic");
                     }).click(function(){
-                        $('#st_gallery').hide('slide',{direction:"left"},hideT);
-                        //console.log(name.split(' ')[0]);
-                        $('#'+labels[j].target_div).fadeIn(2*hideT);
+                        $('#'+pagnav.getCurrPage()).hide('slide',{direction:"left"},hideT);
+                        // console.log($('#st_'+name.split(' ')[0]));
+                        pagnav.openNewPage(labels[j].target_div);
+                        $('#'+labels[j].target_div).fadeIn(2*hideT,function(){
+                            $(this).trigger('visibleNow');
+                        });
                     });
                 }
                 else if(labels[j].active==-1){
@@ -126,9 +135,13 @@ Raphael.fn.sideWheel = function (cx, cy, r, values, labels, stroke,dist) {
                         p.stop().animate({transform: ""}, ms, "elastic");
                         p.attr({fill:'#007F88'});
                     }).click(function(){
-                        $('#st_gallery').hide('slide',{direction:"left"},hideT);
-                         console.log($('#st_'+name.split(' ')[0]));
-                        $('#'+labels[j].target_div).fadeIn(2*hideT);
+                        $('#'+pagnav.getCurrPage()).hide('slide',{direction:"left"},hideT);
+                        // console.log($('#st_'+name.split(' ')[0]));
+                        console.log(labels[j].target_div);
+                        pagnav.openNewPage(labels[j].target_div);
+                        $('#'+labels[j].target_div).fadeIn(2*hideT,function(){
+                            $(this).trigger('visibleNow');
+                        });
                     });
 
                     icon.mouseover(function(){
@@ -138,8 +151,13 @@ Raphael.fn.sideWheel = function (cx, cy, r, values, labels, stroke,dist) {
                         p.stop().animate({transform: ""}, 0, "elastic");
                         p.attr({fill:'#007F88'});
                     }).click(function(){
-                        $('#st_gallery').hide('slide',{direction:"left"},hideT);
-                        $('#'+labels[j].target_div).fadeIn(2*hideT);
+                        $('#'+pagnav.getCurrPage()).hide('slide',{direction:"left"},hideT);
+                        // console.log($('#st_'+name.split(' ')[0]));
+                        console.log(labels[j].target_div);
+                        pagnav.openNewPage(labels[j].target_div);
+                        $('#'+labels[j].target_div).fadeIn(2*hideT,function(){
+                            $(this).trigger('visibleNow');
+                        });
                     });
                 }
                 putfront();
@@ -192,23 +210,24 @@ Raphael.fn.sideWheel = function (cx, cy, r, values, labels, stroke,dist) {
 	   cwidth = Math.min(height,width);
 	var	mu = window.innerHeight*0.5-cwidth*0.5,
 		ms = window.innerWidth*0.5-cwidth*0.5;
-	$("#st_space").css('margin',mu+'px '+ms+'px');
-
-    var values = [45,45,45,45],
-        data = [
-            {title:"",picpath:"images/back.png",target_div:"st_space",active:-1},
-            {title:"contac us",picpath:"images/mail.png",target_div:"st_contact",active:0},
-            {title:"gallery",picpath:"images/gallery.png",target_div:"",active:1},
-            {title:"Home",picpath:"images/home.png",target_div:"st_space",active:0}
-        ];
-	Raphael("st_gallery", 0.5 * cwidth, cwidth)
-    .sideWheel(0, cwidth*0.5, cwidth*0.34, values, data, "rgba(0,0,0,0)",10);
     
     $('#ga_wrapper').css({'height':height*0.7,'width':(width-cwidth*0.5)*0.92,left:0.5*cwidth});
     $('.ga_container').css({'height':height*0.66,'width':(width-cwidth*0.5)*0.92});
+    
     $('#st_gallery').bind('visibleNow',function(){
         console.log(this);
-        $('.ga_container').jScrollPane();
+        if(pagnav.isNewPage('st_gallery')){
+            var values = [45,45,45,45],
+                data = [
+                    {title:"",picpath:"images/back.png",target_div:pagnav.getPrevPage(),active:-1},
+                    {title:"contact us",picpath:"images/mail.png",target_div:"st_contact",active:0},
+                    {title:"gallery",picpath:"images/gallery.png",target_div:"",active:1},
+                    {title:"Home",picpath:"images/home.png",target_div:"st_space",active:0}
+                ];
+            Raphael("st_gallery", 0.5 * cwidth, cwidth)
+            .sideWheel(0, cwidth*0.5, cwidth*0.34, values, data, "rgba(0,0,0,0)",10);
+            $('.ga_container').jScrollPane();
+        }
     })
     /*
     .customScrollbar({
@@ -238,3 +257,7 @@ Raphael.fn.sideWheel = function (cx, cy, r, values, labels, stroke,dist) {
             }
         });
 })();
+
+
+/* should produse trigger
+and should be compatable for current page prev page transactions */
