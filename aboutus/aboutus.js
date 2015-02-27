@@ -12,7 +12,7 @@
                     {title:"sponsors",picpath:"images/sponsors.png",target_div:"st_sponsors",active:0},
                     {title:"events",picpath:"images/events.png",target_div:"st_events",active:0},
                     {title:"about us",picpath:"images/aboutus.png",target_div:"",active:1},
-                    {title:"bulletin",picpath:"images/news.png",target_div:"st_bulletin",active:0}
+                    {title:"bulletins",picpath:"images/news.png",target_div:"st_bulletins",active:0}
                 ];
             Raphael("st_about", 0.5 * cwidth, height)
             .sideWheel(0, cwidth*0.5, cwidth*0.34, values, data, "rgba(0,0,0,0)",10);

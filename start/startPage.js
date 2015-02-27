@@ -179,6 +179,8 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
     return chart;
 };
 
+var wheelData = [];
+
 (function(){
 	var height = Math.max(Math.round($(window).height()),600),
 		width = Math.max(Math.round($(window).width()),600);
@@ -189,6 +191,7 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
 
 	$.get("src/getImages.php",{page:'start'})
     .done(function(data,status){
+        wheelData = data;
         var values = [45,45,45,45,45,45,45,45];
 		Raphael("st_space", width, height).impWheel(width*0.5, width*0.5, width*0.34, values, data, "rgba(0,0,0,0)",10);
 	});

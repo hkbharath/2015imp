@@ -8,14 +8,16 @@
 
 .bu_element{
 	padding: 5px;
+	margin-bottom: 1%; 
 	width:95%;
 	color: white;
 	float: left;
+	cursor: pointer;
 }
 
 .bu_info{
 	padding: 2% 2% 2% 0%;
-	margin: 3% 3% 3% 0%; 
+	margin: 1%; 
 	width: 85%;
 	height: 25px;
 	overflow: hidden;
