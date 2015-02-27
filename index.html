@@ -9,13 +9,72 @@
 <link type="text/css" href="start/start.css" rel="stylesheet">
 <link type="text/css" href="gallery/gallery.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="contactus/contactus.css">
+<link rel="stylesheet" type="text/css" href="events/events.css">
 
 <link rel="stylesheet" type="text/css" href="css/jquery.jscrollpane.css">
 
 <div id='st_space'></div>
 <div id="st_guest" style="display:none"></div>
 <div id="st_sponsors" style="display:none"></div>
-<div id="st_events" style="display:none"></div>
+<div id="st_events" style="">
+	<div id="ev_event_disp1">
+		<a href="#" class="ev_cancel">&times;</a> 
+		evnt 1
+	</div>
+	<div id="ev_event_disp2">
+		<a href="#" class="ev_cancel">&times;</a> 
+		evnt 2
+	</div> 
+	<div id="ev_cover" > <!-- SHud go inside the 75% right side div -->
+		<div id="ev_content">
+			<div class='ev_list'>
+				<div class="ev_head"  style="border-bottom:1px solid white;"> day one </div>
+					<div class="ev_name" align="center">  
+					<a href="#ev_event_disp1" class="ev_button">event 1</a>
+				</div> 
+				<div class="ev_name" align="center">  
+					<a href="#ev_event_disp2" class="ev_button">event 2</a>
+				</div> 
+				<div class="ev_name" align="center">  
+					<a href="#ev_event_disp2" class="ev_button">event 3</a>
+				</div>
+				<div class="ev_name" align="center">  
+					<a href="#ev_event_disp2" class="ev_button">event 4</a>
+				</div>
+				<div class="ev_name" align="center">  
+					<a href="#ev_event_disp2" class="ev_button">event 6</a>
+				</div>
+				<div class="ev_name" align="center">  
+					<a href="#ev_event_disp2" class="ev_button">event 7</a>
+				</div> 
+			</div>
+	
+		<div class='ev_list' style="margin-left:5px;">
+			<div class="ev_head" style="border-bottom:1px solid white;"> day two </div>
+	
+			<div class="ev_name" align="center">  
+				<a href="#ev_event_disp1" class="ev_button">event 1</a>
+			</div> 
+			<div class="ev_name" align="center">  
+				<a href="#ev_event_disp2" class="ev_button">event 2</a>
+			</div> 
+			<div class="ev_name" align="center">  
+				<a href="#ev_event_disp2" class="ev_button">event 3</a>
+			</div>
+			<div class="ev_name" align="center">  
+				<a href="#ev_event_disp2" class="ev_button">event 4</a>
+			</div>
+			<div class="ev_name" align="center">  
+				<a href="#ev_event_disp2" class="ev_button">event 6</a>
+			</div>
+			<div class="ev_name" align="center">  
+				<a href="#ev_event_disp2" class="ev_button">event 7</a>
+			</div> 
+		</div>
+	</div>
+</div> 
+</div>
+
 <div id="st_about" style="display:none">
 </div>
 <div id="st_bulletins" style="display:none"></div>
@@ -102,7 +161,7 @@
 <script type="text/javascript" src="common/jquery-ui.min.js"></script>
 <script type="text/javascript" src="common/jquery.jscrollpane.min.js"></script>
 <script type="text/javascript" src="common/jquery.mousewheel.js"></script>
-
+<script type="text/javascript" src="events/events.js"></script>
 <script type="text/javascript" src = "common/pageNavigation.js"></script>
 <script type="text/javascript" src="start/startPage.js"></script>
 <script type="text/javascript" src="gallery/galleryWheel.js"></script>

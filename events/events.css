@@ -1,0 +1,110 @@
+
+
+ .ev_button
+ { 
+ color:white;
+ text-decoration:none; 
+ font-size:20px;
+ } 
+
+ #ev_cover
+ { 
+ position:fixed;
+ top:0; 
+ left:0; 
+ z-index:5; 
+ width:100%;
+ height:100%;  
+ }
+ 
+/* Change in modal properties or the Pop-up-box */
+ 
+ #ev_event_disp1,#ev_event_disp2 
+{
+ height:600px; /*Calculate to %*/
+ width:90%;
+ float:right;
+ position:relative; 
+ z-index:100; 
+ display:none;
+ background-color:black;
+ border:5px solid #cccccc;
+ margin: 20px; /* Has to Be adjusted*/
+ margin-right:50px;;
+ }
+ 
+ #ev_content
+ {
+ height:450px; /*Calculate to %*/
+ width:60%;
+ float:right;
+ position:relative; 
+ color:white;
+ margin:125px;
+ }
+
+ #ev_event_disp1:target { display:block; opacity:.9; } 
+ #ev_event_disp2:target { display:block; opacity:.9; } 
+
+  
+ 
+ .ev_cancel 
+ { 
+ display:block;
+ position:relative; 
+ float:right;
+ top:-15px;
+ right:-15px;
+ background:rgb(245,245,245);
+ color:black; 
+ height:30px; 
+ width:35px;
+ font-size:30px; 
+ text-decoration:none; 
+ text-align:center;
+ font-weight:bold; 
+ border-radius:50%;
+ }
+ 
+ @font-face{
+	font-family: alienlang;
+	src:url(alienleagueexpand.ttf);
+
+}
+
+  .ev_head{
+	width:100%;
+	height:40px;
+	font-family:alienlang;
+	font-size:40px;
+	padding:3%;
+ }
+ 
+ 
+ 
+ .ev_list{
+	display:inline-block; 
+	width:40%;
+	height:100%;
+	margin-left:14%;
+	margin-top:1%;
+	opacity:0.8; 
+	background-color:black;
+	overflow-x:hidden;
+}
+	
+ .ev_name{
+	width:80%;
+	height:50px;
+	margin:10px;
+	margin-left:10%;
+	border-radius:5px;
+	background-color:grey;
+	font-family: alienlang;
+	font-size:40px;
+	opacity:.9;
+	
+	
+ }
+
+ 
