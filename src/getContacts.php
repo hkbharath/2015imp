@@ -8,32 +8,40 @@ include_once 'debugger.php';
 header("Content-Type:application/json");
 
 class category{
-	var $title;
+	var $name;
+	var $designation;
+	var $email;
+	var $phone;
 	var $picpath;
 }
-$result = array();
+$result = [];
 
 if($_SERVER['REQUEST_METHOD']=="GET"){
 	$db = new dbConnector();
-	$link = $db->getAgent();  
-	if(isset($_GET['page']))
-		$query = "select name,pic_path from imp_images where page='".$_GET['page']."' order by id;";
-	else
-		$query = "select name,pic_path from imp_images order by id";
+	$link = $db->getAgent();
+
+	$query = "select * from imp_contacts order by uid";
 
 	$value = mysqli_query($link, $query);
 
 	if(mysqli_errno($link)!=0){
 		echo json_encode(array("error"=>"No Catagories to Display"));
-		debug('could not connect to database : '.mysqli_errno(),'getImages');
+		debug('could not connect to database : '.mysqli_errno($link),'getCatagory');
 		die("Problem !!");
 	}
 
 	while($newrow = mysqli_fetch_assoc($value)){
 		$newcat = new category();
-		$newcat->title = $newrow['name'];
-		$newcat->picpath = $newrow['pic_path'];
+		$newcat->name = $newrow['name'];
+		$newcat->designation = $newrow['designation'];
+		$newcat->email = $newrow['email'];
+		$newcat->phone = $newrow['phone'];
+		$newcat->picpath = $newrow['picpath'];
 		array_push($result, $newcat);
+	}
+
+	if(count($result)>1){
+		$result = array_slice($result, 1);
 	}
 
 	echo json_encode($result);

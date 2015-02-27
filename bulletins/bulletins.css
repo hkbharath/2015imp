@@ -1,0 +1,40 @@
+.bu_container{
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 80%;
+	float: right;
+}
+
+.bu_element{
+	padding: 5px;
+	width:95%;
+	color: white;
+	float: left;
+}
+
+.bu_info{
+	padding: 2% 2% 2% 0%;
+	margin: 3% 3% 3% 0%; 
+	width: 85%;
+	height: 25px;
+	overflow: hidden;
+	float: right;
+	font-size: 16px;
+	font-family: alienlang;
+}
+
+.bu_name {
+	padding: 2%;
+	float: left;
+	font-size: 30px;
+	font-family: alienlang;
+	border-bottom: 2px solid white;
+	width: 95%;
+}
+
+p.bu_p{
+	padding: 4px;
+	display: inline;
+	font-family: "Lucida Console", Monaco, monospace;
+}

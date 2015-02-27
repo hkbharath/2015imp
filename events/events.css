@@ -1,0 +1,39 @@
+.ev_wrapper{
+	padding:2%;
+	float:right;
+	position: absolute;
+}
+
+.ev_subwrapper{
+	position: relative;
+	overflow: hidden;
+	float: left;
+	margin-left: 2%;
+	padding: 1%;
+	background-color: rgba(0,0,0,0.4); 
+}
+
+.ev_container1, .ev_container2{
+	position: relative;
+	overflow: hidden;
+	float: left;
+	height: 90%;
+	margin-left: 2%;
+	padding: 3%;
+}
+
+.ev_element{
+	width: 98%;
+	float: left;
+	margin: 1%;
+	background: rgba(50, 50, 50, 0.3);
+	border-radius: 5px; 
+	cursor: pointer;
+}
+
+.ev_text{
+	font-family: alienlang;
+	font-size: 30px;
+	margin: 20px;
+	color: white;
+}

@@ -10,16 +10,17 @@ header("Content-Type:application/json");
 class category{
 	var $title;
 	var $picpath;
+	var $contents;
+	var $postby;
+	var $day;
 }
 $result = array();
 
 if($_SERVER['REQUEST_METHOD']=="GET"){
 	$db = new dbConnector();
-	$link = $db->getAgent();  
-	if(isset($_GET['page']))
-		$query = "select name,pic_path from imp_images where page='".$_GET['page']."' order by id;";
-	else
-		$query = "select name,pic_path from imp_images order by id";
+	$link = $db->getAgent();
+
+	$query = "select event_name,pic_path,content,postby,day from imp_events order by eid;";
 
 	$value = mysqli_query($link, $query);
 
@@ -31,8 +32,11 @@ if($_SERVER['REQUEST_METHOD']=="GET"){
 
 	while($newrow = mysqli_fetch_assoc($value)){
 		$newcat = new category();
-		$newcat->title = $newrow['name'];
+		$newcat->event_name = $newrow['event_name'];
 		$newcat->picpath = $newrow['pic_path'];
+		$newcat->day = $newrow['day'];
+		$newcat->postby = $newrow['postby'];
+		$newcat->content = $newrow['content'];
 		array_push($result, $newcat);
 	}
 

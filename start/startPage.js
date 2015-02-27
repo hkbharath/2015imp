@@ -54,9 +54,9 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
                     width = getWidth(iconRatio),
                     height = width * iconRatio,
                     name = labels[j].title,
-                    hideT = 1000,
+                    hideT = 500,
                     p = sector(cx, cy, r+radiuss[j], angle[j], angle[j+1], 
-                        {opacity:0.8,fill: "#007F88", stroke: stroke, "stroke-width": 10, cursor:'pointer'}, dist),
+                        {opacity:0.9,fill: "#007F88", stroke: stroke, "stroke-width": 10, cursor:'pointer'}, dist),
                 
                     txt = paper.text(cx + (r+radiuss[j]) * 0.75 * Math.cos(-popangle * rad), 
                         cy + (r+radiuss[j]) * 0.75 * Math.sin(-popangle * rad), name.split(' ').join('\n'))
@@ -81,9 +81,9 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
                 }).click(function(){
                     $('#st_space').hide('slide',{direction:"left"},hideT);
                     //console.log($('#st_'+name.split(' ')[0]));
-                    pagnav.openNewPage('st_'+name.split(' ')[0]);
                     $('#st_'+name.split(' ')[0]).fadeIn(2*hideT,function(){
                         $(this).trigger('visibleNow');
+                        pagnav.openNewPage('st_'+name.split(' ')[0]);
                     });
                 });
 
@@ -99,10 +99,10 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
                     icon.stop().animate({opacity:1}, 0, "elastic");
                 }).click(function(){
                     $('#st_space').hide('slide',{direction:"left"},hideT);
-                    //console.log(name.split(' ')[0]);
-                    pagnav.openNewPage('st_'+name.split(' ')[0]);
+                    //console.log(name.split(' ')
                     $('#st_'+name.split(' ')[0]).fadeIn(2*hideT,function(){
                         $(this).trigger('visibleNow');
+                        pagnav.openNewPage('st_'+name.split(' ')[0]);
                     });
                 });
 
@@ -118,10 +118,9 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
                     icon.stop().animate({opacity:1}, 0, "elastic");
                 }).click(function(){
                     $('#st_space').hide('slide',{direction:"left"},hideT);
-                   
-                    pagnav.openNewPage('st_'+name.split(' ')[0]);
                     $('#st_'+name.split(' ')[0]).fadeIn(2*hideT,function(){
                         $(this).trigger('visibleNow');
+                        pagnav.openNewPage('st_'+name.split(' ')[0]);
                     });
                 });
                 putfront();
@@ -181,8 +180,8 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
 };
 
 (function(){
-	var height = Math.max(Math.round($(window).height()*0.95),600),
-		width = Math.max(Math.round($(window).width()*0.95),600);
+	var height = Math.max(Math.round($(window).height()),600),
+		width = Math.max(Math.round($(window).width()),600);
 	width = Math.min(height,width);
 	var	mu = window.innerHeight*0.5-width*0.5,
 		ms = window.innerWidth*0.5-width*0.5;
@@ -191,6 +190,6 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
 	$.get("src/getImages.php",{page:'start'})
     .done(function(data,status){
         var values = [45,45,45,45,45,45,45,45];
-		Raphael("st_space", width, width).impWheel(width*0.5, width*0.5, width*0.34, values, data, "rgba(0,0,0,0)",10);
+		Raphael("st_space", width, height).impWheel(width*0.5, width*0.5, width*0.34, values, data, "rgba(0,0,0,0)",10);
 	});
 })();
