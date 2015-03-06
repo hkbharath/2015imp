@@ -19,11 +19,12 @@
 	float: left;
 	height: 90%;
 	margin-left: 2%;
-	padding: 3%;
+	padding: 3.3%;
+	width: 85%;
 }
 
 .ev_element{
-	width: 98%;
+	width: 100%;
 	float: left;
 	margin: 1%;
 	background: rgba(50, 50, 50, 0.3);
@@ -36,4 +37,7 @@
 	font-size: 30px;
 	margin: 20px;
 	color: white;
+	float: left;
+	width:100%;
+	text-align: center;
 }

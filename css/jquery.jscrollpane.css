@@ -34,6 +34,7 @@
 	width: 100%;
 	height: 16px;
 	background: red;
+	display: none;
 }
 
 .jspCap
@@ -44,6 +45,7 @@
 .jspHorizontalBar .jspCap
 {
 	float: left;
+	display: none;
 }
 
 .jspTrack
@@ -67,6 +69,8 @@
 {
 	float: left;
 	height: 100%;
+	display: none;
+
 }
 
 .jspArrow
@@ -95,6 +99,7 @@
 	width: 16px;
 	float: left;
 	height: 100%;
+	display: none;
 }
 
 .jspVerticalBar .jspArrow:focus

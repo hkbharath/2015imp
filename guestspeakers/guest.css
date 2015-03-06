@@ -1,0 +1,42 @@
+.gs_container{
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 80%;
+	float: right;
+	color:white;
+}
+
+.gs_element{
+	margin: 3% 12%;
+	display: inline;
+	width: 25%;
+	float: left;
+	position: relative;
+}
+.gs_element img{
+	width: 98%;
+	margin: 1%;
+	cursor: pointer;
+}
+
+.gs_show{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	float:left;
+	background: rgba(0,0,0,0.5);
+	display: none;
+	cursor: pointer;
+}
+
+.gs_name{
+	padding: 2%;
+	margin-top: 40%;
+	font-size: 2em;
+	font-family: alienlang;
+	text-align: center;
+	z-index: 3;
+}

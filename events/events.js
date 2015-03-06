@@ -23,10 +23,7 @@
                 api2 = $('.ev_container2').jScrollPane().data('jsp');
 
             $.get('src/getEvents.php',function(data,status){
-                for(var j=0 ;j>=0;j++){
-                    if(j==30)
-                        break;
-                    var i = j%2;
+                for(var i=0 ;i < data.length;i++){
                     if(data[i].day == 1){
                         api1.getContentPane().append("<div class='ev_element'\
                             style = \"\">\
