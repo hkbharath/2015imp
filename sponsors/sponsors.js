@@ -16,10 +16,14 @@
                 ];
             Raphael("st_sponsors", 0.5 * cwidth, height)
             .sideWheel(0, cwidth*0.5, cwidth*0.34, values, data, "rgba(0,0,0,0)",10);
-            pane.jScrollPane();
+            
 
             $.get("src/getUpdates.php",function(data,status){
+                pane.jScrollPane();
                 var api = pane.data('jsp');
+                if(data.length>0){
+                    api.getContentPane().append("<p style='font-family:alienlang'> Sponsors details will be put up soon </p>");
+                }
                 for(var i=0; i<data.length ; i++){
                    ;// api.getContentPane().append("<div class = 'bu_element'><div class = 'bu_name' >"+ data[i].title + "</div><div class = 'bu_info'>"+data[i].content+"</div></div>");
                    // api.reinitialise();

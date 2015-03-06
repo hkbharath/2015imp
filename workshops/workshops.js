@@ -16,19 +16,20 @@
                 ];
             Raphael("st_workshops", 0.5 * cwidth, height)
             .sideWheel(0, cwidth*0.5, cwidth*0.34, values, data, "rgba(0,0,0,0)",10);
-            pane.jScrollPane();
+            
 
             $.get("src/getWorkshops.php",function(data){
+                pane.jScrollPane();
                 var api = pane.data('jsp');
                 if(data.length == 0){
-                    api.getContentPane().append("<p> Stay tuned for updates !! </p>");
+                    api.getContentPane().append("<p style='font-family:alienlang'> Stay tuned for updates !! </p>");
                     api.reinitialise();
                 }
                 for(var i=0; i<data.length ; i++){
                     api.getContentPane().append("<div class='ev_element' style = 'width:95%'><div class='ev_text'><img alt='new' src='images/new.png' style='width:8%;position:relative;left:1%;top:1%;float:left'>"+data[i].name+"</div></div>");
                     api.reinitialise();
                 }
-
+                /*
                 pane.find('.ev_element')
                 .click(function(){
                     var nm = $(this).find('.ev_text').text().trim(),
@@ -43,8 +44,9 @@
                     $('#st_popup').fadeIn('fast');
                     $('.pp_content')
                     .append('<div>'+ sel.time +'</div>')
-                    .show('fold',100);
+                    .show('fold',1000);
                 });
+                */
             });
         }
     });

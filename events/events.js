@@ -19,25 +19,35 @@
                 ];
             Raphael("st_events", 0.5 * cwidth, height)
             .sideWheel(0, cwidth*0.5, cwidth*0.34, values, data, "rgba(0,0,0,0)",10);
-            var api1 = $('.ev_container1').jScrollPane().data('jsp'),
-                api2 = $('.ev_container2').jScrollPane().data('jsp');
-
+            
             $.get('src/getEvents.php',function(data,status){
+                var api1 = $('.ev_container1').jScrollPane().data('jsp'),
+                    api2 = $('.ev_container2').jScrollPane().data('jsp'),
+                    o=0,t=0;
                 for(var i=0 ;i < data.length;i++){
                     if(data[i].day == 1){
                         api1.getContentPane().append("<div class='ev_element'\
                             style = \"\">\
-                            <div class='ev_text' align='center'>"+data[i].event_name+"</div>\
+                            <div class='ev_text' align='center'>"+data[i].name+"</div>\
                             </div>");
                         api1.reinitialise();
+                        o=1;
                     }
                     else{
                         api2.getContentPane().append("<div class='ev_element'\
                             style = \"\">\
-                            <div class='ev_text' align='center'>"+data[i].event_name+"</div>\
+                            <div class='ev_text' align='center'>"+data[i].name+"</div>\
                             </div>");
                         api2.reinitialise();
+                        t=1;
                     }
+                }
+
+                if(o==0){
+                    api1.getContentPane().append("<div class='ev_text' align='center'> Comming Up..</div>")
+                }
+                if(t==0){
+                    api2.getContentPane().append("<div class='ev_text' align='center'> Comming Up..</div>")
                 }
             });
         }

@@ -326,10 +326,14 @@ Raphael.fn.sideWheel = function (cx, cy, r, values, labels, stroke,dist) {
             Raphael("st_gallery", 0.5 * cwidth, height)
             .sideWheel(0, cwidth*0.5, cwidth*0.34, values, data, "rgba(0,0,0,0)",10);
 
-            pane.jScrollPane();
+
             $.get('src/getImages.php',{page:'gallery'})
                 .done(function(data,status){
+                    pane.jScrollPane();
                     var api = pane.data('jsp');
+                    if(data.length==0){
+                        api.getContentPane().append("<p style='font-family:alienlang'> Photoes will be put up soon </p>");
+                    }
                     for(var i=0; i < data.length ; i++){
                         imgList[i] = new Image();
                         imgList[i].alt = "Images From UVCE Its Really Fun";

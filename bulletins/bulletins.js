@@ -16,10 +16,13 @@
                 ];
             Raphael("st_bulletins", 0.5 * cwidth, height)
             .sideWheel(0, cwidth*0.5, cwidth*0.34, values, data, "rgba(0,0,0,0)",10);
-            pane.jScrollPane();
 
             $.get("src/getUpdates.php",function(data,status){
+                pane.jScrollPane();
                 var api = pane.data('jsp');
+                if(data.length == 0){
+                    api.getContentPane().append("<p style='font-family:alienlang'> Latest news will be put up soon </p>");
+                }
                 for(var i=0; i<data.length ; i++){
                     console.log(data[i].new);
                     if(data[i].new == "1"){

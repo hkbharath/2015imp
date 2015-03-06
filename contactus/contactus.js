@@ -2,7 +2,7 @@
 	var height = Math.max(Math.round($(window).height()),600),
 	width = Math.max(Math.round($(window).width()),600),
     cwidth = Math.min(height,width);
-
+    pane = $('.cu_container');
     $('.cu_container').css({'height':height*0.70,'width':(width-cwidth*0.5)*0.85});
     $('#st_contact').bind('visibleNow',function(){
         console.log(this);
@@ -16,13 +16,16 @@
                 ];
             Raphael("st_contact", 0.5 * cwidth, height)
             .sideWheel(0, cwidth*0.5, cwidth*0.34, values, data, "rgba(0,0,0,0)",10);
-            $('.cu_container').jScrollPane();
         }
     });
 
     $.get("src/getContacts.php",function(data,status){
-        var reqdiv = $('.cu_container');
+        pane.jScrollPane();
+        var api = pane.data('jsp');
+        if(data.length==0){
+            api.getContentPane().append("<p style='font-family:alienlang'> Contacts will be put up soon </p>")
+        }
         for(var i=0; i<data.length ; i++)
-            reqdiv.append("<div class = 'cu_element'><img src='"+data[i].picpath+"' class = 'cu_image'><div class = 'cu_info'><label class = 'cu_l'>designation:</label> <p class = 'cu_p'> "+data[i].designation+" </p><br><label class = 'cu_l'>email id:</label> <p class = 'cu_p'> "+data[i].email+" </p><br><label class = 'cu_l'>phone number:</label> <p class = 'cu_p'> "+data[i].phone+" </p><br></div><div style='width:100%;height:0px'></div><div class = 'cu_name'> "+data[i].name+" </div></div>");
+            api.getContentPane().append("<div class = 'cu_element'><img src='"+data[i].picpath+"' class = 'cu_image'><div class = 'cu_info'><label class = 'cu_l'>designation:</label> <p class = 'cu_p'> "+data[i].designation+" </p><br><label class = 'cu_l'>email id:</label> <p class = 'cu_p'> "+data[i].email+" </p><br><label class = 'cu_l'>phone number:</label> <p class = 'cu_p'> "+data[i].phone+" </p><br></div><div style='width:100%;height:0px'></div><div class = 'cu_name'> "+data[i].name+" </div></div>");
     })
 })();

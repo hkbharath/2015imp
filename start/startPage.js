@@ -128,7 +128,7 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
             img.src = labels[j].picpath;
         };
     fbIcon.click(function(){
-        var win = window.open('https://https://www.facebook.com/pages/Impetus-2015/561834380517734','_blank');
+        var win = window.open('https://www.facebook.com/pages/Impetus-2015/561834380517734','_blank');
         if(win){
             win.focus();
         }

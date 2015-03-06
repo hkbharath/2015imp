@@ -17,12 +17,13 @@
                 ];
             Raphael("st_guest", 0.5 * cwidth, height)
             .sideWheel(0, cwidth*0.5, cwidth*0.34, values, data, "rgba(0,0,0,0)",10);
-            pane.jScrollPane();
+            
 
             $.get("src/getGuestspeakers.php",function(data,status){
+                pane.jScrollPane();
                 var api = pane.data('jsp');
                 if(data.length == 0){
-                    api.getContentPane().append("<p> Information will be updated soon !! </p>");
+                    api.getContentPane().append("<p style='font-family:alienlang'> Information will be updated soon !! </p>");
                     api.reinitialise();
                 }
                 for(var i=0; i<data.length ; i++){
@@ -30,7 +31,7 @@
                     api.reinitialise();
                 }
                 
-
+                /*
                 pane.find('.gs_element').hover(function(){
                     $(this).find('.gs_show').show();
                 },function(){
@@ -51,7 +52,7 @@
                     .append('<div>'+ sel.time +'</div>')
                     .show('fold',1000);
                 });
-                
+                */
             });
         }
     });

@@ -8,10 +8,12 @@ include_once 'debugger.php';
 header("Content-Type:application/json");
 
 class category{
-	var $title;
+	var $name;
+	var $topic;
+	var $date;
+	var $time;
+	var $place;
 	var $picpath;
-	var $content;
-	var $postby;
 	var $day;
 }
 $result = array();
@@ -20,7 +22,7 @@ if($_SERVER['REQUEST_METHOD']=="GET"){
 	$db = new dbConnector();
 	$link = $db->getAgent();
 
-	$query = "select event_name,pic_path,content,postby,day from imp_events order by eid;";
+	$query = "select name,topic,date,time,place,picpath,day from imp_events order by id;";
 
 	$value = mysqli_query($link, $query);
 
@@ -32,11 +34,13 @@ if($_SERVER['REQUEST_METHOD']=="GET"){
 
 	while($newrow = mysqli_fetch_assoc($value)){
 		$newcat = new category();
-		$newcat->event_name = $newrow['event_name'];
-		$newcat->picpath = $newrow['pic_path'];
+		$newcat->name = $newrow['name'];
+		$newcat->picpath = $newrow['picpath'];
+		$newcat->date = $newrow['date'];
+		$newcat->time = $newrow['time'];
+		$newcat->place = $newrow['place'];
+		$newcat->topic = $newrow['topic'];
 		$newcat->day = $newrow['day'];
-		$newcat->postby = $newrow['postby'];
-		$newcat->content = $newrow['content'];
 		array_push($result, $newcat);
 	}
 
