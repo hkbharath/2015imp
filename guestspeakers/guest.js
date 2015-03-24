@@ -31,6 +31,14 @@
                     api.reinitialise();
                 }
                 
+                var i=0,
+                    ifun = setInterval(function(){
+                        api.reinitialise();
+                        i = i+1;
+                        if(i==20)
+                            clearInterval(ifun);
+                        
+                    },1000);
                 
                 pane.find('.gs_element').hover(function(){
                     $(this).find('.gs_show').show();
