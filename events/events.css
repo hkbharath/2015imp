@@ -19,12 +19,11 @@
 	float: left;
 	height: 90%;
 	margin-left: 2%;
-	padding: 3.3%;
-	width: 85%;
+	width: 95%;
 }
 
 .ev_element{
-	width: 100%;
+	width: 98%;
 	float: left;
 	margin: 1%;
 	background: rgba(50, 50, 50, 0.3);
@@ -33,11 +32,17 @@
 }
 
 .ev_text{
-	font-family: alienlang;
-	font-size: 30px;
-	margin: 20px;
-	color: white;
+	font-family: gsan;
+	font-size: 1.5em;
+	padding: 20px;
 	float: left;
-	width:100%;
+	width:90%;
 	text-align: center;
 }
+
+.ev_text img{
+	width:3%;
+	float:left;
+	margin-right:3%;
+}
+

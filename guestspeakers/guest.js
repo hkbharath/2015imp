@@ -31,7 +31,7 @@
                     api.reinitialise();
                 }
                 
-                /*
+                
                 pane.find('.gs_element').hover(function(){
                     $(this).find('.gs_show').show();
                 },function(){
@@ -40,19 +40,39 @@
                 .click(function(){
                     var nm = $(this).find('.gs_name').text().trim(),
                         sel = null;
-                    //console.log(nm);
+                    console.log(nm);
                     for(var i=0;i<data.length;i++){
-                        if(data[i].name = nm){
+                        if(data[i].name == nm){
                             sel = data[i];
+                            break;
                         }
                     }
-
+                    console.log(sel.topic);     
                     $('#st_popup').fadeIn('fast');
                     $('.pp_content')
-                    .append('<div>'+ sel.time +'</div>')
-                    .show('fold',1000);
+                    .append("<div class = 'bu_element' style='height:94%'><div class = 'bu_name' >"+ sel.name + "<div class='st_clear'></div><div class='bu_time'>event on : "+sel.date+" "+sel.time+"</div><a href='"+sel.fbpath+"' target='_blank'><div class='bu_fb'></div></a></div><div class = 'bu_info' style='height:"+$('.pp_content').height()*0.80+"px'>"+sel.topic+"</div></div>")
+                    .show('fold',1000)
+                    .find('.bu_info').jScrollPane();
+                    var fb = $('.pp_content').find('.bu_fb');
+                    
+                    fb.click(function(){
+                        var win = window.open(sel.fbpath,'_blank');
+                        if(win){
+                            win.focus();
+                        }
+                        else{
+                            alert('Please allow popups for this site !');
+                        }
+                    });
+                    var papi = $('.pp_content').find('.bu_info').data('jsp');
+                    var simg = new Image();
+                    simg.onload = function(){
+                        papi.getContentPane().prepend(simg);
+                        papi.reinitialise();
+                    }
+                    simg.src = sel.picpath;
                 });
-                */
+                
             });
         }
     });

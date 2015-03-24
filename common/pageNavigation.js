@@ -1,14 +1,14 @@
 var pagnav = {
 	pageQ : ["st_space"],
 	opened : [],
-	maxSize : 3,
-	open : 5,
+	maxSize : 50,
+	open : 15,
 	getPrevPage : function(){
 		pq = this.pageQ;
 		if(pq.length>1)
 			return pq[pq.length-2];
 		else
-			return "";
+			return "st_space";
 	},
 	getCurrPage : function(){
 		return this.pageQ[this.pageQ.length-1];
@@ -19,6 +19,8 @@ var pagnav = {
 			$.post('src/addVisitor.php',{});
 			this.open = 100;
 		}
+		if(p=='st_space')
+			this.pageQ = [];
 		this.pageQ.push(p);
 		if(this.pageQ.length == this.maxSize)
 			this.pageQ.shift();
@@ -29,7 +31,14 @@ var pagnav = {
 		return this.opened.indexOf(p) == -1;
 	},
 	openBackPage : function(){
-		this.openNewPage(this.getPrevPage());
+		this.open = this.open - 1;
+		if(this.open == 0){
+			$.post('src/addVisitor.php',{});
+			this.open = 1000;
+		}
+		if(this.pageQ.length>1)
+			this.pageQ.pop();
+		//this.openNewPage(this.getPrevPage());
 	}
 }
 

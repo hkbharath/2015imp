@@ -19,7 +19,13 @@
 
 <link rel="stylesheet" type="text/css" href="css/jquery.jscrollpane.css">
 
-<div id='st_space'></div>
+
+<div class='st_loading'>
+    <h1> impetus 2015 </h1>
+    <p> on 10<sup>th</sup> and 11<sup>th</sup> of April </p>
+    <img src="images/ajax-loader.gif" width="100px">
+</div>
+<div id='st_space' style="display:none"></div>
 <div id="st_guest" style="display:none">
     <div class = 'ga_wrapper'>
         <div class="ga_header"> guest speakers </div>
@@ -28,8 +34,16 @@
 </div>
 <div id="st_sponsors" style="display:none">
     <div class = 'ga_wrapper'>
-        <div class="ga_header"> Sponsors </div>
-        <div class='sp_container'></div>
+        
+        <div class = 'cu_button' id = '2015sponsors'> 2015 </div>
+        <div class = 'cu_button' id = '2014sponsors'> Previous Sponsors </div>
+        <div class='st_clear'></div>
+        <div style = 'position:absolute'>
+            <div class='sp_container1'>
+                <!--<div id = 'sp_draw'></div> -->
+            </div>
+            <div class='sp_container2'></div>
+        </div>
     </div>
 </div>
 <div id="st_events" style="display:none">
@@ -98,21 +112,33 @@ The kinds of innovation that we've seen with mobile devices and their ability to
 </div>
 <div id="st_contact" style="display:none">
 	<div class = 'ga_wrapper'>
-		<div class = 'cu_container'>
-			 
-		</div>
+        <div class = 'cu_button' id = 'contacts'> Contacts </div>
+        <div class = 'cu_button' id = 'team'> The Team</div>
+        <div class='st_clear'></div>
+        <div style='position:absolute'>
+		    <div class = 'cu_container1'></div>
+            <div class = 'cu_container2'></div>
+        </div>
 	</div>
 </div>
 <div id="st_gallery" style="display:none">
+
+    <div class='st_clear'></div>
 	<div class = 'ga_wrapper'>
-		<div class="ga_header"> PHOTOS </div>
-		<div class = 'ga_container'> 
-		</div>
+        <div class = 'cu_button' id = '2015gallery'> 2015 </div>
+        <div class = 'cu_button' id = '2014gallery'> 2014 </div>
+        <div class = 'ga_container1'></div>
+        <div class = 'ga_container2'></div>
 	</div>
 </div>
 <div id = 'st_popup' style="display:none">
 	<div class='pp_content'></div>
     <div class='pp_close'></div>
+    <div style='color:black'>
+        <p align='center'>Dev By: mrb.mahesh and hkbharath</p>
+        <p align='center'>Des By: aisiri</p>
+        <p align='center'>Assist : shivasheeshyadav, profile.php?id=100000756204279</p>
+    </div>
 </div>
 
 <script type="text/javascript" src="common/jquery.js"></script>
@@ -132,5 +158,6 @@ The kinds of innovation that we've seen with mobile devices and their ability to
 <script type="text/javascript" src = "workshops/workshops.js"></script>
 <script type="text/javascript" src="sponsors/sponsors.js"></script>
 <script type="text/javascript" src="popup/popup.js"></script>
+
 </body>
 </html>

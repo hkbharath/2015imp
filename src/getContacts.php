@@ -11,7 +11,7 @@ class category{
 	var $name;
 	var $designation;
 	var $email;
-	var $phone;
+	var $fbpath;
 	var $picpath;
 }
 $result = [];
@@ -35,13 +35,9 @@ if($_SERVER['REQUEST_METHOD']=="GET"){
 		$newcat->name = $newrow['name'];
 		$newcat->designation = $newrow['designation'];
 		$newcat->email = $newrow['email'];
-		$newcat->phone = $newrow['phone'];
+		$newcat->fbpath = $newrow['fbpath'];
 		$newcat->picpath = $newrow['picpath'];
 		array_push($result, $newcat);
-	}
-
-	if(count($result)>1){
-		$result = array_slice($result, 1);
 	}
 
 	echo json_encode($result);

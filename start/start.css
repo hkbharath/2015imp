@@ -22,6 +22,29 @@ html{
 	src:url(GeosansLight.ttf);
 }
 
+body{
+	color: #e0e0e0;
+}
+
+.st_loading{
+	position: absolute;
+	text-align: center;
+	padding-top: 15%;
+	color: #e1e1e1;
+	font-family: alienlang;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+
+.st_loading h1{
+	font-size: 5em;
+}
+
+.st_loading p {
+	font-size: 2.5em;
+}
 .st_soc_icon_container{
 	position:absolute;
 	top:50%;
@@ -35,4 +58,8 @@ html{
 	width:10%;
 	height:10%;
 	margin: 2%;
+}
+
+.st_clear{
+	clear: both;
 }

@@ -7,9 +7,10 @@
 	position: absolute;
 	font-family: gsan;
 	color:#e1e1e1;
+	overflow: hidden;
 }
 
-.ga_container{
+.ga_container1, .ga_container2{
 	position: relative;
 	overflow: hidden;
 	width: 100%;
@@ -30,6 +31,7 @@
 	font-size: 40px;
 	border-bottom: solid 3px white;
 	color: white;
+	margin-bottom: 15px;
 }
 
 .ga_layer{

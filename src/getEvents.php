@@ -9,12 +9,13 @@ header("Content-Type:application/json");
 
 class category{
 	var $name;
-	var $topic;
+	var $description;
 	var $date;
 	var $time;
 	var $place;
 	var $picpath;
 	var $day;
+	var $fbpath;
 }
 $result = array();
 
@@ -22,7 +23,7 @@ if($_SERVER['REQUEST_METHOD']=="GET"){
 	$db = new dbConnector();
 	$link = $db->getAgent();
 
-	$query = "select name,topic,date,time,place,picpath,day from imp_events order by id;";
+	$query = "select name,description,date,time,place,picpath,day,fbpath from imp_events order by id desc;";
 
 	$value = mysqli_query($link, $query);
 
@@ -39,8 +40,9 @@ if($_SERVER['REQUEST_METHOD']=="GET"){
 		$newcat->date = $newrow['date'];
 		$newcat->time = $newrow['time'];
 		$newcat->place = $newrow['place'];
-		$newcat->topic = $newrow['topic'];
+		$newcat->description = $newrow['description'];
 		$newcat->day = $newrow['day'];
+		$newcat->fbpath = $newrow['fbpath'];
 		array_push($result, $newcat);
 	}
 

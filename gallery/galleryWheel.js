@@ -307,14 +307,18 @@ Raphael.fn.sideWheel = function (cx, cy, r, values, labels, stroke,dist) {
 	   cwidth = Math.min(height,width);
 	var	mu = window.innerHeight*0.5-cwidth*0.5,
 		ms = window.innerWidth*0.5-cwidth*0.5,
-        pane = $('.ga_container'),
+        pane1 = $('.ga_container1'),
+        pane2 = $('.ga_container2'),
+        g2014 = $('#2014gallery'),
+        g2015 = $('#2015gallery'),
         imgList = [];
     $('.ga_wrapper').css({'height':height*0.75,'width':(width-cwidth*0.5)*0.85,
         top:height*0.07,left:cwidth*0.5+10});
-    $('.ga_container').css({'height':height*0.70,'width':(width-cwidth*0.5)*0.85});
+    $('.ga_container1').css({'height':height*0.70,'width':(width-cwidth*0.5)*0.85});
+    $('.ga_container2').css({'height':height*0.70,'width':(width-cwidth*0.5)*0.85,'display':'none'});
     
     $('#st_gallery').bind('visibleNow',function(){
-        console.log(this);
+        //console.log(this);
         if(pagnav.isNewPage('st_gallery')){
             var values = [45,45,45,45],
                 data = [
@@ -326,32 +330,92 @@ Raphael.fn.sideWheel = function (cx, cy, r, values, labels, stroke,dist) {
             Raphael("st_gallery", 0.5 * cwidth, height)
             .sideWheel(0, cwidth*0.5, cwidth*0.34, values, data, "rgba(0,0,0,0)",10);
 
+            var selected = null,
+                hideT = 1000,
+                isFirstTime2014 = false,
+                isFirstTime2015 = false,
+                selectg2015 = function(){
+                    if(selected == g2015)
+                        return false;
+                    selected = g2015;
+                    pane2.fadeOut(hideT,function(){
+                        pane1.fadeIn(hideT);
+                    });
+                    
+                    g2015.css({'color':'#000000'});
+                    g2014.css({'color':'#e1e1e1'});
+                    if(!isFirstTime2015){
+                        $.get('src/getImages.php',{page:'gallery'})
+                        .done(function(data,status){
+                            pane1.jScrollPane();
+                            var api1 = pane1.data('jsp');
+                            if(data.length==0){
+                                api1.getContentPane().append("<p style='font-family:alienlang'> Photoes will be put up soon </p>");
+                            }
+                            for(var i=0; i < data.length ; i++){
+                                imgList[i] = new Image();
+                                imgList[i].alt = "Images From UVCE Its Really Fun";
 
-            $.get('src/getImages.php',{page:'gallery'})
-                .done(function(data,status){
-                    pane.jScrollPane();
-                    var api = pane.data('jsp');
-                    if(data.length==0){
-                        api.getContentPane().append("<p style='font-family:alienlang'> Photoes will be put up soon </p>");
+                                imgList[i].onload = function(){
+                                    $(this).on('click',function(){
+                                        //$('#ga_popup').fadeIn('fast');
+                                        console.log(this.src);
+                                    })
+                                    .attr('class','ga_image');
+                                    api1.getContentPane().append($(this));
+                                    api1.reinitialise();
+                                    
+                                    console.log(this);
+                                }
+                                imgList[i].src = data[i].picpath;
+                            }
+                        });
+                        isFirstTime2015 = true;
                     }
-                    for(var i=0; i < data.length ; i++){
-                        imgList[i] = new Image();
-                        imgList[i].alt = "Images From UVCE Its Really Fun";
+                },
+                selectg2014 = function(){
+                    if(selected == g2014)
+                        return false;
+                    selected = g2014;
+                    pane1.fadeOut(hideT,function(){
+                        pane2.fadeIn(hideT);
+                    });
+                    g2014.css({'color':'#000000'});
+                    g2015.css({'color':'#e1e1e1'});
+                    if(!isFirstTime2014){
+                        $.get('src/getImages.php',{page:'old'})
+                        .done(function(data,status){
+                            pane2.jScrollPane();
+                            var api2 = pane2.data('jsp');
+                            if(data.length==0){
+                                api2.getContentPane().append("<p style='font-family:alienlang'> Photoes will be put up soon </p>");
+                            }
+                            for(var i=0; i < data.length ; i++){
+                                imgList[i] = new Image();
+                                imgList[i].alt = "Images From UVCE Its Really Fun";
 
-                        imgList[i].onload = function(){
-                            $(this).on('click',function(){
-                                //$('#ga_popup').fadeIn('fast');
-                                console.log(this.src);
-                            })
-                            .attr('class','ga_image');
-                            api.getContentPane().append($(this));
-                            api.reinitialise();
-                            
-                            console.log(this);
-                        }
-                        imgList[i].src = data[i].picpath;
+                                imgList[i].onload = function(){
+                                    $(this).on('click',function(){
+                                        //$('#ga_popup').fadeIn('fast');
+                                        console.log(this.src);
+                                    })
+                                    .attr('class','ga_image');
+                                    api2.getContentPane().append($(this));
+                                    api2.reinitialise();
+                                    
+                                    console.log(this);
+                                }
+                                imgList[i].src = data[i].picpath;
+                            }
+                        });
+                        isFirstTime2014 = true;
                     }
-                });
+                };
+
+                selectg2015();
+
+                g2015.click(selectg2015);
+                g2014.click(selectg2014);
         }
     });
     /*

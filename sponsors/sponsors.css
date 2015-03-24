@@ -1,7 +1,8 @@
-.sp_container{
+.sp_container1, .sp_container2{
 	position: relative;
 	overflow: hidden;
-	width: 100%;
-	height: 80%;
-	float: right;
+}
+
+.sp_container2 img{
+	width:96%;
 }

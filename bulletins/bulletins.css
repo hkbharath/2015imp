@@ -10,9 +10,7 @@
 	padding: 5px;
 	margin-bottom: 1%; 
 	width:95%;
-	color: white;
 	float: left;
-	cursor: pointer;
 }
 
 .bu_info{
@@ -37,12 +35,32 @@
 
 .bu_time{
 	padding: 1px;
+	width: auto;
 	font-family: gsan;
-	font-size: 0.5em;
+	font-size: 0.7em;
+	float: left;
 }
 
-p.bu_p{
-	padding: 4px;
-	display: inline;
+.bu_fb{
+	width:25px;
+	height:25px;
+	background: url('../images/fb-icon.png') no-repeat scroll 0% 0% / cover ;
+	cursor: pointer;
+	float:right;
+}
+
+.bu_info p{
+	text-align: justify;
 	font-family: gsan;
+	padding: 4px;
+}
+
+.bu_info img{
+	width:75%;
+}
+
+.bu_info a{
+	color: rgb(255,150,100);
+	text-decoration: none;
+	font-size: 1.23em;
 }

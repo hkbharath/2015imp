@@ -14,6 +14,8 @@ class category{
 	var $time;
 	var $place;
 	var $picpath;
+	var $type;
+	var $fbpath;
 }
 $result = array();
 
@@ -21,7 +23,7 @@ if($_SERVER['REQUEST_METHOD']=="GET"){
 	$db = new dbConnector();
 	$link = $db->getAgent();
 
-	$query = "select name,topic,date,time,place,picpath from imp_workshops order by id;";
+	$query = "select name,topic,date,time,place,picpath,type,fbpath from imp_workshops order by id desc;";
 
 	$value = mysqli_query($link, $query);
 
@@ -39,6 +41,8 @@ if($_SERVER['REQUEST_METHOD']=="GET"){
 		$newcat->time = $newrow['time'];
 		$newcat->place = $newrow['place'];
 		$newcat->topic = $newrow['topic'];
+		$newcat->type = $newrow['type'];
+		$newcat->fbpath = $newrow['fbpath'];
 		array_push($result, $newcat);
 	}
 

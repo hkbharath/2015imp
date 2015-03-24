@@ -26,27 +26,50 @@
                     api.reinitialise();
                 }
                 for(var i=0; i<data.length ; i++){
-                    api.getContentPane().append("<div class='ev_element' style = 'width:95%'><div class='ev_text'><img alt='new' src='images/new.png' style='width:8%;position:relative;left:1%;top:1%;float:left'>"+data[i].name+"</div></div>");
+                    if(data[i].type==0)
+                        api.getContentPane().append("<div class='ev_element' style = 'width:95%'><div class='ev_text'><img alt='workshops' src='images/workshops.png'>"+data[i].name+"</div></div>");
+                    else if(data[i].type==1)
+                        api.getContentPane().append("<div class='ev_element' style = 'width:95%'><div class='ev_text'><img alt='workshops' src='images/exhibition.png'>"+data[i].name+"</div></div>");
+
                     api.reinitialise();
                 }
-                /*
+                
                 pane.find('.ev_element')
                 .click(function(){
                     var nm = $(this).find('.ev_text').text().trim(),
                         sel = null;
                     console.log(nm);
                     for(var i=0;i<data.length;i++){
-                        if(data[i].name = nm){
+                        if(data[i].name == nm){
                             sel = data[i];
                         }
                     }
 
                     $('#st_popup').fadeIn('fast');
                     $('.pp_content')
-                    .append('<div>'+ sel.time +'</div>')
-                    .show('fold',1000);
+                    .append("<div class = 'bu_element' style='height:94%'><div class = 'bu_name' >"+ sel.name + "<div class='st_clear'></div><div class='bu_time'>event on : "+sel.date+" "+sel.time+"</div><a href='"+sel.fbpath+"' target='_blank'><div class='bu_fb'></div></a></div><div class = 'bu_info' style='height:"+$('.pp_content').height()*0.80+"px'>"+sel.topic+"</div></div>")
+                    .show('fold',1000)
+                    .find('.bu_info').jScrollPane();
+                    var fb = $('.pp_content').find('.bu_fb');
+                    
+                    fb.click(function(){
+                        var win = window.open(sel.fbpath,'_blank');
+                        if(win){
+                            win.focus();
+                        }
+                        else{
+                            alert('Please allow popups for this site !');
+                        }
+                    });
+                    var papi = $('.pp_content').find('.bu_info').data('jsp');
+                    var simg = new Image();
+                    simg.onload = function(){
+                        papi.getContentPane().prepend(simg);
+                        papi.reinitialise();
+                    }
+                    simg.src = sel.picpath;
                 });
-                */
+                
             });
         }
     });

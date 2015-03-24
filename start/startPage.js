@@ -15,12 +15,16 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
     var total = 0,
         radiuss = [80,40,20,0,20,45,-10,30],
         angle = [0,0,0,0,0,0,0,0,0],
-        center = paper.circle(cx,cy,r*0.45).attr({fill:"black"}),
-        centerText = paper.text(cx,cy-r*0.05,'impetus 2015')
-                    .attr({fill: 'white', stroke: "none", "font-size": 24, "font-family":"alienlang",cursor:'pointer'}),
-        iwidth = r*0.4/3,
+        center = paper.circle(cx,cy,r*0.48).attr({fill:"black"}),
+        centerText = paper.text(cx,cy-r*0.1,'impetus 2015')
+                    .attr({fill: 'white', stroke: "none", "font-size": 28, "font-family":"alienlang",cursor:'pointer'}),
+        centerTextTag = paper.text(cx,cy,'reconnect.build.automate')
+                    .attr({fill: 'white', stroke: "none", "font-size": 17, "font-family":"alienlang",cursor:'pointer'}),
+        centerTextDate = paper.text(cx,cy+r*0.1,'10th and 11th of April')
+                    .attr({fill: 'white', stroke: "none", "font-size": 14, "font-family":"gsan",cursor:'pointer'})
+        iwidth = r*0.30/3,
         imargin = r*0.15/3,
-        iy = cy + r*0.08,
+        iy = cy + r*0.2,
         fbIcon = paper.image('images/fb-icon.png', 
                 cx - 1.5 * iwidth - imargin, iy,
                 iwidth, iwidth).attr({cursor:'pointer'}),
@@ -33,6 +37,8 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
         putfront = function(){
             center.toFront();
             centerText.toFront();
+            centerTextTag.toFront();
+            centerTextDate.toFront();
             fbIcon.toFront();
             twIcon.toFront();
             gpIcon.toFront();
@@ -182,17 +188,23 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
 var wheelData = [];
 
 (function(){
-	var height = Math.max(Math.round($(window).height()),600),
-		width = Math.max(Math.round($(window).width()),600);
-	width = Math.min(height,width);
-	var	mu = window.innerHeight*0.5-width*0.5,
-		ms = window.innerWidth*0.5-width*0.5;
-	$("#st_space").css('margin',mu+'px '+ms+'px');
+    setTimeout(function(){
+        $('.st_loading').hide();
 
-	$.get("src/getImages.php",{page:'start'})
-    .done(function(data,status){
-        wheelData = data;
-        var values = [45,45,45,45,45,45,45,45];
-		Raphael("st_space", width, height).impWheel(width*0.5, width*0.5, width*0.34, values, data, "rgba(0,0,0,0)",10);
-	});
+        $('#st_space').fadeIn('fast');
+
+    	var height = Math.max(Math.round($(window).height()),600),
+    		width = Math.max(Math.round($(window).width()),600);
+    	width = Math.min(height,width);
+    	var	mu = window.innerHeight*0.5-width*0.5,
+    		ms = window.innerWidth*0.5-width*0.5;
+    	$("#st_space").css('margin',mu+'px '+ms+'px');
+
+    	$.get("src/getImages.php",{page:'start'})
+        .done(function(data,status){
+            wheelData = data;
+            var values = [45,45,45,45,45,45,45,45];
+    		Raphael("st_space", width, height).impWheel(width*0.5, width*0.5, width*0.34, values, data, "rgba(0,0,0,0)",10);
+    	});
+    },5000);
 })();
