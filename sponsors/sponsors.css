@@ -1,8 +1,9 @@
 .sp_container1, .sp_container2{
 	position: relative;
 	overflow: hidden;
+	text-align: center;
 }
 
-.sp_container2 img{
+.sp_container2 .fullImage{
 	width:96%;
 }

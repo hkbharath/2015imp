@@ -69,11 +69,13 @@
                             isOldSponsorsLoaded = true;
                             var old = new Image();
                             old.onload = function(){
+                                api2.getContentPane().empty();
                                 api2.getContentPane().append(this);
                                 api2.reinitialise();
                             };
                             old.src = 'images/oldSponsors.png';
                             old.alt = 'Previous Sponsors';
+                            old.className = 'fullImage';
                         }
                     });
                 },

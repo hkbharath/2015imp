@@ -91,12 +91,14 @@
                     }   
                     $('#st_popup').fadeIn('fast');
                     $('.pp_content')
-                    .append("<div class = 'bu_element' style='height:94%'><div class = 'bu_name' >"+ sel.name + "<div class='st_clear'></div><div class='bu_time'>event on : "+sel.date+" "+sel.time+"</div><a href='"+sel.fbpath+"' target='_blank'><div class='bu_fb'></div></a></div><div class = 'bu_info' style='height:"+$('.pp_content').height()*0.80+"px'>"+sel.description+"<div class='st_clear'></div><div id = 'show_register' class='ev_button'>Register</div></div>\
+                    .append("<div class = 'bu_element' style='height:94%'><div class = 'bu_name' >"+ sel.name + "<div class='st_clear'></div><div class='bu_time'>event on : "+sel.date+" "+sel.time+"</div><a href='"+sel.fbpath+"' target='_blank'><div class='bu_fb'></div></a><div class = 'st_clear'></div><div id = 'show_register' class='ev_button' style='font-size:0.6em;float:left;margin-bottom:0.5%'>Register</div></div><div class = 'bu_info' style='height:"+$('.pp_content').height()*0.75+"px'>"+sel.description+"<div class='st_clear'></div></div>\
                         <div class = 'ev_form_container'>    <div id = 'ev_notify'></div>    <form id = 'ev_form' action = 'src/regsiterUser.php' method = 'post'>        <input type='hidden' name = 'event' value='"+sel.name +"'>        <input type='text' name = 'name' placeholder = 'Your Sweet Name' >        <input type = 'text' name = 'college' placeholder = 'Your Great College Name' >        <input type = 'email' name ='user_email' placeholder = 'Give Us Your Proper Email' >        <input type = 'text' name = 'user_phone' placeholder = 'Your Phone Number? Trust Us we Don`t Spam :)' ><div class='ev_button' id = 'ev_back'> Back to Description</div> <input type = 'reset' id = 'form_reset' class = 'ev_button' value = 'Reset'><input type = 'submit' id = 'form_submit' class = 'ev_button' value = 'Register'></form></div></div>")
                     .show('fold',1000)
-                    .find('.bu_info').jScrollPane()
-                    .find('#show_register').click(function(){
+                    .find('.bu_info').jScrollPane();
+                    var showRegistration = $('.bu_element #show_register');
+                    showRegistration.click(function(){
                         $('.pp_content .bu_info').fadeOut('fast',function(){
+                            showRegistration.hide(500);
                             $('.ev_form_container').show('fold',1000);    
                         });
                     });
@@ -104,6 +106,7 @@
                         //preventDefault();
                         $('.ev_form_container').fadeOut('fast',function(){
                             $('.pp_content .bu_info').show('fold',1000);
+                            showRegistration.show(500);
                         });
                     });
                     $('.ev_form_container #ev_form').submit(function(e){
@@ -145,6 +148,12 @@
                                 else
                                     notifyError('Registration Failed Try Again!!');
                                 f.reset();
+                                setTimeout(function(){
+                                    $('.ev_form_container').fadeOut('fast',function(){
+                                        $('.pp_content .bu_info').show('fold',1000);
+                                        showRegistration.show(500);
+                                    });
+                                },1500);
                             },
                             error:function(jqXHR, textStatus, errorThrown){
                                 console.log(jqXHR);
@@ -153,6 +162,8 @@
                         });
                         e.preventDefault();
                         //e.unbind();
+                        //back to description
+                        
                     });
                 });
             });

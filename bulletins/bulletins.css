@@ -17,11 +17,12 @@
 	padding: 2% 2% 2% 0%;
 	margin: 1%; 
 	width: 85%;
-	height: 25px;
+	height: 10%;
 	overflow: hidden;
 	float: right;
 	font-size: 1.2em;
 	font-family: gsan;
+	position: relative;
 }
 
 .bu_name {
