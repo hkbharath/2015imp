@@ -41,7 +41,7 @@ var pagnav = {
 		//this.openNewPage(this.getPrevPage());
 	}
 }
-
+/*
 $(window).keydown(function(e){
 	if(e.keyCode == 8){
 		e.preventDefault();
@@ -52,4 +52,4 @@ $(window).keydown(function(e){
     	});
     	pagnav.openBackPage();
     }
-});
+});*/
