@@ -5,11 +5,26 @@
         return re.test(email);
     }
 
+    function clearNotify(){
+        var sel = $('.ev_form_container #ev_notify');
+        sel.fadeOut(1000);
+    }
+
     function notifyError(error) {
         var sel = $('.ev_form_container #ev_notify');
         sel.empty();
         sel.append('<p>'+error+'</p>')
         .fadeIn(400);
+        setTimeout(clearNotify,4000);
+    }
+
+    function notify(error) {
+        var sel = $('.ev_form_container #ev_notify');
+        sel.empty();
+        sel.css({'border':'solid green 2px'});
+        sel.append('<p>'+error+'</p>')
+        .fadeIn(400);
+        setTimeout(clearNotify,4000);
     }
 
 	var height = $(window).height(),
@@ -77,7 +92,7 @@
                     $('#st_popup').fadeIn('fast');
                     $('.pp_content')
                     .append("<div class = 'bu_element' style='height:94%'><div class = 'bu_name' >"+ sel.name + "<div class='st_clear'></div><div class='bu_time'>event on : "+sel.date+" "+sel.time+"</div><a href='"+sel.fbpath+"' target='_blank'><div class='bu_fb'></div></a></div><div class = 'bu_info' style='height:"+$('.pp_content').height()*0.80+"px'>"+sel.description+"<div class='st_clear'></div><div id = 'show_register' class='ev_button'>Register</div></div>\
-                        <div class = 'ev_form_container'>    <div id = 'ev_notify'></div>    <form id = 'ev_form' action = 'src/regsiterUser.php'>        <input type='hidden' name = 'event' value='"+sel.name +"'>        <input type='text' name = 'name' placeholder = 'Your Sweet Name' >        <input type = 'text' name = 'college' placeholder = 'Your Great College Name' >        <input type = 'email' name ='user_email' placeholder = 'Give Us Your Proper Email' >        <input type = 'text' name = 'user_phone' placeholder = 'Your Phone Number? Trust Us we Don`t Spam :)' ><input type = 'reset' id = 'form_reset' class = 'ev_button' value = 'Cancel'><input type = 'submit' id = 'form_submit' class = 'ev_button' value = 'Register'></form></div></div>")
+                        <div class = 'ev_form_container'>    <div id = 'ev_notify'></div>    <form id = 'ev_form' action = 'src/regsiterUser.php' method = 'post'>        <input type='hidden' name = 'event' value='"+sel.name +"'>        <input type='text' name = 'name' placeholder = 'Your Sweet Name' >        <input type = 'text' name = 'college' placeholder = 'Your Great College Name' >        <input type = 'email' name ='user_email' placeholder = 'Give Us Your Proper Email' >        <input type = 'text' name = 'user_phone' placeholder = 'Your Phone Number? Trust Us we Don`t Spam :)' ><div class='ev_button' id = 'ev_back'> Back to Description</div> <input type = 'reset' id = 'form_reset' class = 'ev_button' value = 'Reset'><input type = 'submit' id = 'form_submit' class = 'ev_button' value = 'Register'></form></div></div>")
                     .show('fold',1000)
                     .find('.bu_info').jScrollPane()
                     .find('#show_register').click(function(){
@@ -85,36 +100,60 @@
                             $('.ev_form_container').show('fold',1000);    
                         });
                     });
-                    $('.ev_form_container #form_reset').click(function(){
+                    $('.ev_form_container #ev_back').click(function(){
                         //preventDefault();
                         $('.ev_form_container').fadeOut('fast',function(){
                             $('.pp_content .bu_info').show('fold',1000);
                         });
                     });
                     $('.ev_form_container #ev_form').submit(function(e){
+                        
                         if( $('input[name = "name"').val() === ""){
-                            e.preventDefault();
+                            //e.preventDefault();
                             notifyError('Please Give us Valid Name');
                             return false;
                         }
                         if( $('input[name = "college"').val() === ""){
-                            e.preventDefault();
+                            //e.preventDefault();
                             notifyError('Please Give us Valid College Name');
                             return false;
                         }
                         var chk = $('input[name = "user_email"').val();
-                        if( chk === "" || validateEmail(chk) ){
-                            e.preventDefault();
+                        if( chk === "" || !validateEmail(chk) ){
+                            //e.preventDefault();
                             notifyError('Please Give us Valid Email-Id');
                             return false;
                         }
                         chk = $('input[name = "user_phone"').val();
                         if( chk === "" || isNaN(chk) || chk.length != 10){
-                            e.preventDefault();
-                            notifyError('Please Give us Valid Phone Number');
+                            //e.preventDefault();
+                            notifyError('Please Give us Valid 10-digit Phone Number withput any spaces');
                             return false;
                         }
-                    })
+
+                        var postData = $(this).serializeArray(),
+                            postUrl = $(this).attr("action"),
+                            f = this;
+                        $.ajax({
+                            url:postUrl,
+                            type:"POST",
+                            data:postData,
+                            success:function(data, status){
+                                console.log(data);
+                                if(data.reply == "okey")
+                                    notify('Successfully Registered');
+                                else
+                                    notifyError('Registration Failed Try Again!!');
+                                f.reset();
+                            },
+                            error:function(jqXHR, textStatus, errorThrown){
+                                console.log(jqXHR);
+                            }
+
+                        });
+                        e.preventDefault();
+                        //e.unbind();
+                    });
                 });
             });
         }
