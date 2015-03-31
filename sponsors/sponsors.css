@@ -7,3 +7,25 @@
 .sp_container2 .fullImage{
 	width:96%;
 }
+.sp_image{
+	float:left;
+	width: 100%;
+	cursor: pointer;
+	z-index: 100;
+}
+
+#sp_image0,#sp_image1,#sp_image2,#sp_image3,#sp_image4,#sp_image5,#sp_image6,
+#sp_image7,#sp_image8,#sp_image9,#sp_image10,#sp_image11,#sp_image12
+{
+	text-align: center;
+	float: left;
+	margin:2%;
+	width:21%;
+}
+
+.sp_load{
+	width: 30%;
+	margin: 34% 0%;
+	cursor: pointer;
+	z-index: 100;
+}

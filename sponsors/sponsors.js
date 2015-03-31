@@ -56,7 +56,10 @@
                 newSponsors = $('#2015sponsors'), 
                 selected,
                 hideT = 700,
-                isOldSponsorsLoaded = false;
+                isOldSponsorsLoaded = false,
+                isNewSponsorsLoaded = false,
+                imgList = [],
+                loadImgList = [],
                 selectOld = function(){
                     if(selected == oldSponsors)
                         return false;
@@ -87,32 +90,52 @@
                     newSponsors.css({'color':'#000000'});
                     pane2.fadeOut(hideT,function(){
                         pane1.fadeIn(hideT);
+                        if(!isNewSponsorsLoaded){
+                            $.get("src/getSponsors.php",function(data,status){
+                                if(data.length == 0){
+                                    api1.getContentPane().append("<p style='font-family:alienlang'> Sponsors details will be put up soon </p>");                                
+                                }
+
+                                for(var i=0; i < data.length ; i++){
+                                    loadImgList[i] = new Image();
+                                    $(loadImgList[i]).attr({'class':'sp_load'});
+                                    loadImgList[i].src = 'images/ajax-loader.gif';
+                                    api1.getContentPane().append("<div id='sp_image"+i+"'></div>");
+                                    api1.getContentPane().find('#sp_image'+i).append(loadImgList[i]);
+                                    api1.reinitialise();
+                                    
+                                    imgList[i] = new Image();
+                                    imgList[i].alt = data[i].title+'_'+i;
+
+                                    imgList[i].onload = function(){
+                                        $(this).on('click',function(){
+                                            //$('#ga_popup').fadeIn('fast');
+                                            console.log(this.src);
+                                        })
+                                        .attr('class','sp_image');
+                                        var ser = (this.alt).split('_')[1];
+                                        $('#sp_image'+ser+' .sp_load').hide();
+                                        api1.getContentPane().find('#sp_image'+ser).append(this);
+                                        api1.reinitialise();
+                                        
+                                        //console.log(this);
+                                    }
+                                    imgList[i].src = data[i].picpath;
+                                }
+                            });
+                            isNewSponsorsLoaded = true;
+                        }
                     });
                     api1.reinitialise();
                 };
 
 
-            api1.getContentPane().append("<p style='font-family:alienlang'> Sponsors details will be put up soon </p>");
+            //api1.getContentPane().append("<p style='font-family:alienlang'> Sponsors details will be put up soon </p>");
             
             selectNew();
 
             newSponsors.click(selectNew);
-            oldSponsors.click(selectOld);
-
-            /*
-            $.get("src/getUpdates.php",function(data,status){
-                pane.jScrollPane();
-                var api = pane.data('jsp');
-                if(data.length>0){
-                    
-                }
-
-                for(var i=0; i<data.length ; i++){ 
-                   ;// api.getContentPane().append("<div class = 'bu_element'><div class = 'bu_name' >"+ data[i].title + "</div><div class = 'bu_info'>"+data[i].content+"</div></div>");
-                   // api.reinitialise();
-                }
-            });
-            */
+            oldSponsors.click(selectOld);            
         }
     });
 })();

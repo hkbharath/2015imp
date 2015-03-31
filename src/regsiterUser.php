@@ -13,7 +13,7 @@
 			die("");
 		}
 
-		$query = "INSERT INTO imp_event_register(name,college,phone,email) values ('".$_POST['name']."','".$_POST['college']."','".$_POST['user_phone']."','".$_POST['user_email']."');";
+		$query = "INSERT INTO imp_event_register(name,college,phone,email,event) values ('".$_POST['name']."','".$_POST['college']."','".$_POST['user_phone']."','".$_POST['user_email']."','".$_POST['event']."');";
 
 		//echo $query;
 		$value = mysqli_query($link, $query);
