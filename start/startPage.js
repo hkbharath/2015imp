@@ -15,12 +15,16 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
     var total = 0,
         radiuss = [80,40,20,0,20,45,-10,30],
         angle = [0,0,0,0,0,0,0,0,0],
-        center = paper.circle(cx,cy,r*0.45).attr({fill:"black"}),
-        centerText = paper.text(cx,cy-r*0.05,'impetus 2015')
-                    .attr({fill: 'white', stroke: "none", "font-size": 24, "font-family":"alienlang",cursor:'pointer'}),
-        iwidth = r*0.4/3,
+        center = paper.circle(cx,cy,r*0.48).attr({fill:"black"}),
+        centerText = paper.text(cx,cy-r*0.1,'impetus 2015')
+                    .attr({fill: 'white', stroke: "none", "font-size": 28, "font-family":"alienlang",cursor:'pointer'}),
+        centerTextTag = paper.text(cx,cy,'reconnect.build.automate')
+                    .attr({fill: 'white', stroke: "none", "font-size": 17, "font-family":"alienlang",cursor:'pointer'}),
+        centerTextDate = paper.text(cx,cy+r*0.1,'10th and 11th of April')
+                    .attr({fill: 'white', stroke: "none", "font-size": 14, "font-family":"gsan",cursor:'pointer'})
+        iwidth = r*0.30/3,
         imargin = r*0.15/3,
-        iy = cy + r*0.08,
+        iy = cy + r*0.2,
         fbIcon = paper.image('images/fb-icon.png', 
                 cx - 1.5 * iwidth - imargin, iy,
                 iwidth, iwidth).attr({cursor:'pointer'}),
@@ -33,6 +37,8 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
         putfront = function(){
             center.toFront();
             centerText.toFront();
+            centerTextTag.toFront();
+            centerTextDate.toFront();
             fbIcon.toFront();
             twIcon.toFront();
             gpIcon.toFront();
@@ -54,9 +60,9 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
                     width = getWidth(iconRatio),
                     height = width * iconRatio,
                     name = labels[j].title,
-                    hideT = 1000,
+                    hideT = 500,
                     p = sector(cx, cy, r+radiuss[j], angle[j], angle[j+1], 
-                        {opacity:0.8,fill: "#007F88", stroke: stroke, "stroke-width": 10, cursor:'pointer'}, dist),
+                        {opacity:0.9,fill: "#007F88", stroke: stroke, "stroke-width": 10, cursor:'pointer'}, dist),
                 
                     txt = paper.text(cx + (r+radiuss[j]) * 0.75 * Math.cos(-popangle * rad), 
                         cy + (r+radiuss[j]) * 0.75 * Math.sin(-popangle * rad), name.split(' ').join('\n'))
@@ -81,9 +87,9 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
                 }).click(function(){
                     $('#st_space').hide('slide',{direction:"left"},hideT);
                     //console.log($('#st_'+name.split(' ')[0]));
-                    pagnav.openNewPage('st_'+name.split(' ')[0]);
                     $('#st_'+name.split(' ')[0]).fadeIn(2*hideT,function(){
                         $(this).trigger('visibleNow');
+                        pagnav.openNewPage('st_'+name.split(' ')[0]);
                     });
                 });
 
@@ -99,10 +105,10 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
                     icon.stop().animate({opacity:1}, 0, "elastic");
                 }).click(function(){
                     $('#st_space').hide('slide',{direction:"left"},hideT);
-                    //console.log(name.split(' ')[0]);
-                    pagnav.openNewPage('st_'+name.split(' ')[0]);
+                    //console.log(name.split(' ')
                     $('#st_'+name.split(' ')[0]).fadeIn(2*hideT,function(){
                         $(this).trigger('visibleNow');
+                        pagnav.openNewPage('st_'+name.split(' ')[0]);
                     });
                 });
 
@@ -118,10 +124,9 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
                     icon.stop().animate({opacity:1}, 0, "elastic");
                 }).click(function(){
                     $('#st_space').hide('slide',{direction:"left"},hideT);
-                   
-                    pagnav.openNewPage('st_'+name.split(' ')[0]);
                     $('#st_'+name.split(' ')[0]).fadeIn(2*hideT,function(){
                         $(this).trigger('visibleNow');
+                        pagnav.openNewPage('st_'+name.split(' ')[0]);
                     });
                 });
                 putfront();
@@ -129,7 +134,7 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
             img.src = labels[j].picpath;
         };
     fbIcon.click(function(){
-        var win = window.open('https://https://www.facebook.com/pages/Impetus-2015/561834380517734','_blank');
+        var win = window.open('https://www.facebook.com/pages/Impetus-2015/561834380517734','_blank');
         if(win){
             win.focus();
         }
@@ -180,17 +185,26 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
     return chart;
 };
 
-(function(){
-	var height = Math.max(Math.round($(window).height()*0.95),600),
-		width = Math.max(Math.round($(window).width()*0.95),600);
-	width = Math.min(height,width);
-	var	mu = window.innerHeight*0.5-width*0.5,
-		ms = window.innerWidth*0.5-width*0.5;
-	$("#st_space").css('margin',mu+'px '+ms+'px');
+var wheelData = [];
 
-	$.get("src/getImages.php",{page:'start'})
-    .done(function(data,status){
-        var values = [45,45,45,45,45,45,45,45];
-		Raphael("st_space", width, width).impWheel(width*0.5, width*0.5, width*0.34, values, data, "rgba(0,0,0,0)",10);
-	});
+(function(){
+    setTimeout(function(){
+        $('.st_loading').hide();
+
+        $('#st_space').fadeIn('fast');
+
+    	var height = Math.max(Math.round($(window).height()),600),
+    		width = Math.max(Math.round($(window).width()),600);
+    	width = Math.min(height,width);
+    	var	mu = window.innerHeight*0.5-width*0.5,
+    		ms = window.innerWidth*0.5-width*0.5;
+    	$("#st_space").css('margin',mu+'px '+ms+'px');
+
+    	$.get("src/getImages.php",{page:'start'})
+        .done(function(data,status){
+            wheelData = data;
+            var values = [45,45,45,45,45,45,45,45];
+    		Raphael("st_space", width, height).impWheel(width*0.5, width*0.5, width*0.34, values, data, "rgba(0,0,0,0)",10);
+    	});
+    },5000);
 })();

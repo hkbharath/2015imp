@@ -1,30 +1,32 @@
-.cu_container{
-	position: relative;
+.cu_container1, .cu_container2{
+	position: absolute;
 	overflow: hidden;
-	width: 100%;
-	height: 80%;
-	float: right;
 }
 
+.cu_super_container1{
+	position: absolute;
+	overflow: hidden;
+}
 .cu_element{
 	padding: 5px;
-	margin: 2%;
+	margin: 1%;
 	width:90%;
 	color: white;
-	float: right;
+	float: left;
+	border-bottom: 2px solid white;
 }
 
 img.cu_image {
 	float: left;
-	margin: 5% 5% 2% 5%;
-	width: 10%;
+	margin: 1% 10% 2% 2%;
+	width: 20%;
 	top: 0;
 	left: 0;
 }
 
 .cu_info{
 	padding: 2% 2% 2% 0%;
-	margin: 3% 3% 3% 0%; 
+	margin: 3% 0% 0% 5%; 
 	width: 60%;
 	float: left;
 	font-size: 16px;
@@ -32,13 +34,13 @@ img.cu_image {
 }
 
 .cu_name {
-	padding: 2%;
-	float: left;
+	padding: 1%;
 	font-size: 30px;
 	font-family: alienlang;
-	border-top: 2px solid white;
-	width: 90%;
+	text-align: right ;
+	float: right;
 }
+
 label.cu_l{
 	font-size: 20px;
 	margin: 5px 15px 5px 5px ;
@@ -48,5 +50,17 @@ label.cu_l{
 p.cu_p{
 	padding: 4px;
 	display: inline;
-	font-family: "Lucida Console", Monaco, monospace;
+	font-family: gsan;
+}
+
+.cu_button{
+	float: right;
+	margin: 1%;
+	padding: 5px 20px;
+	background: rgba(1, 124, 133, 0.79);
+	border-radius: 5px; 
+	cursor: pointer;
+	font-family: gsan;
+	font-size: 1.2em;
+	text-align: center;
 }

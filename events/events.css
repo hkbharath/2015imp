@@ -1,0 +1,95 @@
+.ev_wrapper{
+	padding:2%;
+	float:right;
+	position: absolute;
+}
+
+.ev_subwrapper{
+	position: relative;
+	overflow: hidden;
+	float: left;
+	margin-left: 2%;
+	padding: 1%;
+	background-color: rgba(0,0,0,0.4); 
+}
+
+.ev_container1, .ev_container2{
+	position: relative;
+	overflow: hidden;
+	float: left;
+	height: 90%;
+	margin-left: 2%;
+	width: 95%;
+}
+
+.ev_element{
+	width: 98%;
+	float: left;
+	margin: 1%;
+	background: rgba(50, 50, 50, 0.3);
+	border-radius: 5px; 
+	cursor: pointer;
+}
+
+.ev_text{
+	font-family: gsan;
+	font-size: 1.5em;
+	padding: 20px;
+	float: left;
+	width:90%;
+	text-align: center;
+}
+
+.ev_text img{
+	width:3%;
+	float:left;
+	margin-right:3%;
+}
+
+.ev_button, #ev_form input[type="submit"],input[type="reset"]{
+	float: right;
+	margin: 3% 1%;
+	padding: 5px 20px;
+	background: rgba(1, 124, 133, 0.79);
+	border-radius: 5px; 
+	cursor: pointer;
+	font-family: gsan;
+	font-size: 1.3em;
+	text-align: center;
+	border: 0px;
+	color: #e0e0e0;
+}
+
+#ev_form input[type="text"],input[type="email"] {
+	float: left;
+	padding: 2%;
+	font-size: 1.2em;
+	font-family: gsan;
+	color: #e0e0e0;
+	width:96%;
+	background: rgba(50, 50, 50, 0.3);
+	border:0px; 	
+} 
+
+.ev_form_container{
+	display: none;
+	float:right;
+	margin: 5% 0%;
+	width:100%;
+}
+
+.ev_form{
+	float:left;
+}
+
+#ev_notify{
+	width: 96%;
+	font-size: 0.8em;
+	background: rgba(50, 50, 50, 0.3);
+	display: none;
+	margin:1%;
+	border: red solid 2px;
+	border-radius: 10px;
+	text-align: center;
+	font-family: gsan;
+}

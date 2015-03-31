@@ -15,11 +15,8 @@ $result = array();
 
 if($_SERVER['REQUEST_METHOD']=="GET"){
 	$db = new dbConnector();
-	$link = $db->getAgent();  
-	if(isset($_GET['page']))
-		$query = "select name,pic_path from imp_images where page='".$_GET['page']."' order by id;";
-	else
-		$query = "select name,pic_path from imp_images order by id";
+	$link = $db->getAgent();
+	$query = "select name,pic_path from imp_images where page='sponsor' order by id;";
 
 	$value = mysqli_query($link, $query);
 

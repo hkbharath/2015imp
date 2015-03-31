@@ -8,18 +8,22 @@ include_once 'debugger.php';
 header("Content-Type:application/json");
 
 class category{
-	var $title;
+	var $name;
+	var $topic;
+	var $date;
+	var $time;
+	var $place;
 	var $picpath;
+	var $type;
+	var $fbpath;
 }
 $result = array();
 
 if($_SERVER['REQUEST_METHOD']=="GET"){
 	$db = new dbConnector();
-	$link = $db->getAgent();  
-	if(isset($_GET['page']))
-		$query = "select name,pic_path from imp_images where page='".$_GET['page']."' order by id;";
-	else
-		$query = "select name,pic_path from imp_images order by id";
+	$link = $db->getAgent();
+
+	$query = "select name,topic,date,time,place,picpath,type,fbpath from imp_workshops order by id desc;";
 
 	$value = mysqli_query($link, $query);
 
@@ -31,8 +35,14 @@ if($_SERVER['REQUEST_METHOD']=="GET"){
 
 	while($newrow = mysqli_fetch_assoc($value)){
 		$newcat = new category();
-		$newcat->title = $newrow['name'];
-		$newcat->picpath = $newrow['pic_path'];
+		$newcat->name = $newrow['name'];
+		$newcat->picpath = $newrow['picpath'];
+		$newcat->date = $newrow['date'];
+		$newcat->time = $newrow['time'];
+		$newcat->place = $newrow['place'];
+		$newcat->topic = $newrow['topic'];
+		$newcat->type = $newrow['type'];
+		$newcat->fbpath = $newrow['fbpath'];
 		array_push($result, $newcat);
 	}
 

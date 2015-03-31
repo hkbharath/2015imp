@@ -1,17 +1,16 @@
-#ga_wrapper{
-	background-color:black;
-	opacity:0.5;
+.ga_wrapper{
+	background-color:rgba(0,0,0,0.5) ;
 	border:2px #000 solid;
 	border-radius:10px;
 	padding:3%;
 	float:right;
-	margin: 3% 1%;
 	position: absolute;
-	top:5%;
-	left:25%;
+	font-family: gsan;
+	color:#e1e1e1;
+	overflow: hidden;
 }
 
-.ga_container{
+.ga_container1, .ga_container2{
 	position: relative;
 	overflow: hidden;
 	width: 100%;
@@ -32,6 +31,7 @@
 	font-size: 40px;
 	border-bottom: solid 3px white;
 	color: white;
+	margin-bottom: 15px;
 }
 
 .ga_layer{
@@ -42,4 +42,8 @@
 	opacity: 0.6;
 	width:100%;
 	height:100%;
+}
+
+.ga_loading{
+	background: rgba(0,0,0,0.5) url('../images/ajax-loader.gif') no-repeat center center fixed;
 }

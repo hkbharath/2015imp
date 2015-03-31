@@ -1,0 +1,67 @@
+.bu_container{
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 80%;
+	float: right;
+}
+
+.bu_element{
+	padding: 5px;
+	margin-bottom: 1%; 
+	width:95%;
+	float: left;
+}
+
+.bu_info{
+	padding: 2% 2% 2% 0%;
+	margin: 1%; 
+	width: 85%;
+	height: 10%;
+	overflow: hidden;
+	float: right;
+	font-size: 1.2em;
+	font-family: gsan;
+	position: relative;
+}
+
+.bu_name {
+	padding: 2%;
+	float: left;
+	font-size: 30px;
+	font-family: alienlang;
+	border-bottom: 2px solid white;
+	width: 95%;
+}
+
+.bu_time{
+	padding: 1px;
+	width: auto;
+	font-family: gsan;
+	font-size: 0.7em;
+	float: left;
+}
+
+.bu_fb{
+	width:25px;
+	height:25px;
+	background: url('../images/fb-icon.png') no-repeat scroll 0% 0% / cover ;
+	cursor: pointer;
+	float:right;
+}
+
+.bu_info p{
+	text-align: justify;
+	font-family: gsan;
+	padding: 4px;
+}
+
+.bu_info img{
+	width:75%;
+}
+
+.bu_info a{
+	color: rgb(255,150,100);
+	text-decoration: none;
+	font-size: 1.23em;
+}
