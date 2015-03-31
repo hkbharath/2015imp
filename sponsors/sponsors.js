@@ -68,18 +68,17 @@
                     oldSponsors.css({'color':'#000000'});
                     pane1.fadeOut(hideT,function(){
                         pane2.fadeIn(hideT);
-                        if(!isOldSponsorsLoaded){
-                            isOldSponsorsLoaded = true;
-                            var old = new Image();
-                            old.onload = function(){
-                                api2.getContentPane().empty();
-                                api2.getContentPane().append(this);
-                                api2.reinitialise();
-                            };
-                            old.src = 'images/oldSponsors.png';
-                            old.alt = 'Previous Sponsors';
-                            old.className = 'fullImage';
-                        }
+                        api2.getContentPane().empty();
+                        api2.getContentPane().append('<img src="images/ajax-loader.gif" width="100px" style="margin-top:15%">');
+                        var old = new Image();
+                        old.onload = function(){
+                            api2.getContentPane().empty();
+                            api2.getContentPane().append(this);
+                            api2.reinitialise();
+                        };
+                        old.src = 'images/oldSponsors.png';
+                        old.alt = 'Previous Sponsors';
+                        old.className = 'fullImage';
                     });
                 },
                 selectNew = function(){
@@ -90,41 +89,39 @@
                     newSponsors.css({'color':'#000000'});
                     pane2.fadeOut(hideT,function(){
                         pane1.fadeIn(hideT);
-                        if(!isNewSponsorsLoaded){
-                            $.get("src/getSponsors.php",function(data,status){
-                                if(data.length == 0){
-                                    api1.getContentPane().append("<p style='font-family:alienlang'> Sponsors details will be put up soon </p>");                                
-                                }
+                        api1.getContentPane().empty();
+                        $.get("src/getSponsors.php",function(data,status){
+                            if(data.length == 0){
+                                api1.getContentPane().append("<p style='font-family:alienlang'> Sponsors details will be put up soon </p>");                                
+                            }
 
-                                for(var i=0; i < data.length ; i++){
-                                    loadImgList[i] = new Image();
-                                    $(loadImgList[i]).attr({'class':'sp_load'});
-                                    loadImgList[i].src = 'images/ajax-loader.gif';
-                                    api1.getContentPane().append("<div id='sp_image"+i+"'></div>");
-                                    api1.getContentPane().find('#sp_image'+i).append(loadImgList[i]);
+                            for(var i=0; i < data.length ; i++){
+                                loadImgList[i] = new Image();
+                                $(loadImgList[i]).attr({'class':'sp_load'});
+                                loadImgList[i].src = 'images/ajax-loader.gif';
+                                api1.getContentPane().append("<div id='sp_image"+i+"'></div>");
+                                api1.getContentPane().find('#sp_image'+i).append(loadImgList[i]);
+                                api1.reinitialise();
+                                
+                                imgList[i] = new Image();
+                                imgList[i].alt = data[i].title+'_'+i;
+
+                                imgList[i].onload = function(){
+                                    $(this).on('click',function(){
+                                        //$('#ga_popup').fadeIn('fast');
+                                        console.log(this.src);
+                                    })
+                                    .attr('class','sp_image');
+                                    var ser = (this.alt).split('_')[1];
+                                    $('#sp_image'+ser+' .sp_load').hide();
+                                    api1.getContentPane().find('#sp_image'+ser).append(this);
                                     api1.reinitialise();
                                     
-                                    imgList[i] = new Image();
-                                    imgList[i].alt = data[i].title+'_'+i;
-
-                                    imgList[i].onload = function(){
-                                        $(this).on('click',function(){
-                                            //$('#ga_popup').fadeIn('fast');
-                                            console.log(this.src);
-                                        })
-                                        .attr('class','sp_image');
-                                        var ser = (this.alt).split('_')[1];
-                                        $('#sp_image'+ser+' .sp_load').hide();
-                                        api1.getContentPane().find('#sp_image'+ser).append(this);
-                                        api1.reinitialise();
-                                        
-                                        //console.log(this);
-                                    }
-                                    imgList[i].src = data[i].picpath;
+                                    //console.log(this);
                                 }
-                            });
-                            isNewSponsorsLoaded = true;
-                        }
+                                imgList[i].src = data[i].picpath;
+                            }
+                        });
                     });
                     api1.reinitialise();
                 };

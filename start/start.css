@@ -40,10 +40,12 @@ body{
 
 .st_loading h1{
 	font-size: 5em;
+	margin-bottom: 1%;
 }
 
 .st_loading p {
 	font-size: 2.5em;
+	margin-top: 1%;
 }
 .st_soc_icon_container{
 	position:absolute;
