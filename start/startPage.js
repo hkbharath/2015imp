@@ -72,63 +72,66 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
                     icon = paper.image(labels[j].picpath, 
                         cx + (r+radiuss[j]) * 0.75 * Math.cos(-popangle * rad) - width * 0.5, 
                         cy + (r+radiuss[j]) * 0.75 * Math.sin(-popangle * rad) - height * 0.5, 
-                        width,height).attr({cursor:'pointer'});
+                        width,height).attr({cursor:'pointer'}),
 
-                p.mouseover(function () {
-                    p.stop().animate({transform: "s1.02 1.02 " + cx + " " + cy}, ms, "elastic");
-                    p.attr({fill:'#049296'});
-                    txt.stop().animate({opacity: 1}, ms, "elastic");
-                    icon.stop().animate({opacity:0}, ms, "elastic");
-                }).mouseout(function () {
-                    p.stop().animate({transform: ""}, ms, "elastic");
-                    p.attr({fill:'#007F88'});
-                    txt.stop().animate({opacity: 0}, ms);
-                    icon.stop().animate({opacity:1}, ms, "elastic");
-                }).click(function(){
-                    $('#st_space').hide('slide',{direction:"left"},hideT);
-                    //console.log($('#st_'+name.split(' ')[0]));
-                    $('#st_'+name.split(' ')[0]).fadeIn(2*hideT,function(){
-                        $(this).trigger('visibleNow');
-                        pagnav.openNewPage('st_'+name.split(' ')[0]);
-                    });
-                });
+                    newImg = null,
+                    click_do =  function(){
+                                    $('#st_space').hide('slide',{direction:"left"},hideT);
+                                    $('#st_'+name.split(' ')[0]).fadeIn(2*hideT,function(){
+                                        $(this).trigger('visibleNow');
+                                        pagnav.openNewPage('st_'+name.split(' ')[0]);
+                                    });
+                                },
+                    mouseover_do =  function () {
+                                        p.stop().animate({transform: "s1.02 1.02 " + cx + " " + cy}, ms, "elastic");
+                                        p.attr({fill:'#049296'});
+                                        txt.stop().animate({opacity: 1}, ms, "elastic");
+                                        icon.stop().animate({opacity:0}, ms, "elastic");
+                                        if(name == "bulletins" && newImg != null){
+                                            newImg.stop().animate({opacity:0}, ms, "elastic");
+                                        }
+                                    },
+                    mouseout_do =  function () {
+                                        p.stop().animate({transform: ""}, ms, "elastic");
+                                        p.attr({fill:'#007F88'});
+                                        txt.stop().animate({opacity: 0}, ms);
+                                        icon.stop().animate({opacity:1}, ms, "elastic");
+                                        if(name == "bulletins" && newImg != null){
+                                            newImg.stop().animate({opacity:1}, ms, "elastic");
+                                        }
+                                    };
 
-                icon.mouseover(function(){
-                    p.stop().animate({transform: "s1.02 1.02 " + cx + " " + cy}, ms, "elastic");
-                    p.attr({fill:'#049296'});
-                    txt.stop().animate({opacity: 1}, ms, "elastic");
-                    icon.stop().animate({opacity:0}, ms, "elastic");
-                }).mouseout(function(){
-                    p.stop().animate({transform: ""}, 0, "elastic");
-                    p.attr({fill:'#007F88'});
-                    txt.stop().animate({opacity: 0}, 0);
-                    icon.stop().animate({opacity:1}, 0, "elastic");
-                }).click(function(){
-                    $('#st_space').hide('slide',{direction:"left"},hideT);
-                    //console.log(name.split(' ')
-                    $('#st_'+name.split(' ')[0]).fadeIn(2*hideT,function(){
-                        $(this).trigger('visibleNow');
-                        pagnav.openNewPage('st_'+name.split(' ')[0]);
+                if(name == "bulletins"){
+                    $.get("src/getNewUpdates.php")
+                    .done(function(data){
+                        
+                        if(data){
+                            newImg = paper.image("images/new.png", 
+                            cx + (r+radiuss[j]) * 0.75 * Math.cos(-popangle * rad) + width * 0.5 - 15, 
+                            cy + (r+radiuss[j]) * 0.75 * Math.sin(-popangle * rad) - height * 0.5 - 10, 
+                            30,15).attr({cursor:'pointer'});
+                        }          
                     });
-                });
+                }
 
-                txt.mouseover(function(){
-                    p.stop().animate({transform: "s1.02 1.02 " + cx + " " + cy}, ms, "elastic");
-                    p.attr({fill:'#049296'});
-                    txt.stop().animate({opacity: 1}, ms, "elastic");
-                    icon.stop().animate({opacity:0}, ms, "elastic");
-                }).mouseout(function(){
-                    p.stop().animate({transform: ""}, 0, "elastic");
-                    p.attr({fill:'#007F88'});
-                    txt.stop().animate({opacity: 0}, 0);
-                    icon.stop().animate({opacity:1}, 0, "elastic");
-                }).click(function(){
-                    $('#st_space').hide('slide',{direction:"left"},hideT);
-                    $('#st_'+name.split(' ')[0]).fadeIn(2*hideT,function(){
-                        $(this).trigger('visibleNow');
-                        pagnav.openNewPage('st_'+name.split(' ')[0]);
-                    });
-                });
+                p.mouseover(mouseover_do)
+                 .mouseout(mouseout_do)
+                 .click(click_do);
+
+                icon.mouseover(mouseover_do)
+                 .mouseout(mouseout_do)
+                 .click(click_do);
+
+                txt.mouseover(mouseover_do)
+                 .mouseout(mouseout_do)
+                 .click(click_do);
+
+                if(name == "bulletins" && newImg != null){
+                    newImg.mouseover(mouseover_do)
+                        .mouseout(mouseout_do)
+                        .click(click_do);
+                }
+
                 putfront();
             }
             img.src = labels[j].picpath;
@@ -182,6 +185,8 @@ Raphael.fn.impWheel = function (cx, cy, r, values, labels, stroke,dist) {
     for (i = 0; i < ii; i++) {
         process(i);
     }
+
+    
     return chart;
 };
 
