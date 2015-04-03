@@ -9,32 +9,41 @@
 }
 
 .sp_container1 p{
-	font-size: 1em;
+	font-size: 1.5em;
 	font-family: gsan;
-	margin-top: 1%;
+	margin: 1% 0%;
+	padding: 1% 0%;
 	float: left;
-	width: 100%; 
-}
-
-.sp_image{
-	float:left;
 	width: 100%;
-	cursor: pointer;
-	z-index: 100;
+	text-align: center;
+	border-bottom: solid 2px white; 
 }
 
-#sp_image0,#sp_image1,#sp_image2,#sp_image3,#sp_image4,#sp_image5,#sp_image6,
-#sp_image7,#sp_image8,#sp_image9,#sp_image10,#sp_image11,#sp_image12
+.sp_image_container .sp_image{
+	margin: 2% 2%;
+	width: 12%;
+}
+
+.sp_image_container_big .sp_image{
+	width: 19%;
+	margin: 2% 3%;
+}
+
+.sp_image_container
 {
 	text-align: center;
-	float: left;
-	margin:3% 1% ;
-	width:14%;
+	display: inline;
+}
+
+.sp_image_container_big
+{
+	text-align: center;
+	margin: 2% 3%;
+	display: inline;
 }
 
 .sp_load{
-	width: 30%;
+	width: 20%;
 	margin: 34% 0%;
-	cursor: pointer;
 	z-index: 100;
 }

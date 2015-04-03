@@ -59,25 +59,36 @@
                 isOldSponsorsLoaded = false,
                 isNewSponsorsLoaded = false,
                 
-                loadSponsorSet = function(url){
-                    var arena = api1.getContentPane();
+                loadSponsorSet = function(url,divId,divHead,chooseBig){
+                    if(chooseBig === undefined)
+                        chooseBig = 0;
+
+                    var 
                         imgList = [],
                         loadImgList = [];
                     $.get(url,function(data,status){
                         if(data.length == 0){
-                            arena.append("<p style='font-family:alienlang'> Sponsors details will be put up soon </p>");                                
+                            return false;                                
                         }
+                        api1.getContentPane().append("<div class='ev_element' id = '"+divId+"'><p>"+divHead+"</p></div>");
+
+                        var arena = api1.getContentPane().find("#"+divId),
+                            divwidth = arena.width()/data.length;
 
                         for(var i=0; i < data.length ; i++){
                             loadImgList[i] = new Image();
                             $(loadImgList[i]).attr({'class':'sp_load'});
                             loadImgList[i].src = 'images/ajax-loader.gif';
-                            arena.append("<div id='sp_image"+i+"'></div>");
-                            arena.find('#sp_image'+i).append(loadImgList[i]);
+                            if(chooseBig)
+                                arena.append("<div id='sp_image"+data[i].id+"' class='sp_image_container_big'></div>");
+                            else
+                                arena.append("<div id='sp_image"+data[i].id+"' class='sp_image_container'></div>");
+
+                            arena.find('#sp_image'+data[i].id).append(loadImgList[i]);
                             api1.reinitialise();
                             
                             imgList[i] = new Image();
-                            imgList[i].alt = data[i].title+'_'+i;
+                            imgList[i].alt = data[i].title+'_'+data[i].id;
 
                             imgList[i].onload = function(){
                                 $(this).on('click',function(){
@@ -87,7 +98,7 @@
                                 .attr('class','sp_image');
                                 var ser = (this.alt).split('_')[1];
                                 $('#sp_image'+ser+' .sp_load').hide();
-                                arena.find('#sp_image'+ser).append("<p>"+(this.alt).split('_')[0]+"</p>").append(this);
+                                arena.find('#sp_image'+ser).append(this);
                                 api1.reinitialise();
                                 
                                 //console.log(this);
@@ -124,9 +135,18 @@
                     oldSponsors.css({'color':'#e1e1e1'});
                     newSponsors.css({'color':'#000000'});
                     pane2.fadeOut(hideT,function(){
-                        pane1.fadeIn(hideT);
                         api1.getContentPane().empty();
-                        loadSponsorSet("src/getSponsors.php");
+                        pane1.fadeIn(hideT);
+                        
+                        loadSponsorSet("src/getPlatinumSponsors.php","sp_platinum","Platinum Sponsors",1);
+                        loadSponsorSet("src/getGoldSponsors.php","sp_gold","Gold Sponsors",1);
+                        loadSponsorSet("src/getSupportSponsors.php","sp_support","Supported By");
+                        loadSponsorSet("src/getEventSponsors.php","sp_event","Event Sponsors");
+                        loadSponsorSet("src/getStyleSponsors.php","sp_style","Style Sponsors");
+                        loadSponsorSet("src/getWorkshopSponsors.php","sp_workshop","Workshop Sponsors");
+                        loadSponsorSet("src/getPrintSponsors.php","sp_print","Print Sponsors");
+                        
+
                     });
                     api1.reinitialise();
                 };

@@ -11,5 +11,8 @@ class dbConnector{
 		mysqli_set_charset($this->link, 'utf8mb4');
 		return $this->link;
 	}
+	function close(){
+		mysqli_close($this->link);
+	}
 }
 ?>
