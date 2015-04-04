@@ -25,25 +25,33 @@
 }
 
 .sp_image_container_big .sp_image{
-	width: 19%;
-	margin: 2% 3%;
+	width: 21%;
+	margin: 2% 2%;
 }
 
-.sp_image_container
+.sp_image_container,.sp_image_container_wide,.sp_image_container_big
 {
 	text-align: center;
-	display: inline;
-}
-
-.sp_image_container_big
-{
-	text-align: center;
-	margin: 2% 3%;
 	display: inline;
 }
 
 .sp_load{
-	width: 20%;
-	margin: 34% 0%;
+	width: 10%;
+	verical-align:center;
+	text-align:center;
 	z-index: 100;
+}
+
+.sp_element{
+	width: 98%;
+	float: left;
+	margin: 1%;
+	background: rgba(50, 50, 50, 0.3);
+	border-radius: 5px; 
+}
+
+.sp_image_container_wide .sp_image
+{
+	width:30%;
+	margin: 2% 1.5%;
 }

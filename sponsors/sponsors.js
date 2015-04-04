@@ -62,6 +62,7 @@
                 loadSponsorSet = function(url,divId,divHead,chooseBig){
                     if(chooseBig === undefined)
                         chooseBig = 0;
+		    api1.getContentPane().append("<div class='sp_element' id = '"+divId+"'><p>"+divHead+"</p></div>");
 
                     var 
                         imgList = [],
@@ -70,7 +71,7 @@
                         if(data.length == 0){
                             return false;                                
                         }
-                        api1.getContentPane().append("<div class='ev_element' id = '"+divId+"'><p>"+divHead+"</p></div>");
+
 
                         var arena = api1.getContentPane().find("#"+divId),
                             divwidth = arena.width()/data.length;
@@ -79,8 +80,10 @@
                             loadImgList[i] = new Image();
                             $(loadImgList[i]).attr({'class':'sp_load'});
                             loadImgList[i].src = 'images/ajax-loader.gif';
+							if( data[i].id=="49" || data[i].id=="52")
+								arena.append("<div id='sp_image"+data[i].id+"' class='sp_image_container_wide'></div>");
                             if(chooseBig)
-                                arena.append("<div id='sp_image"+data[i].id+"' class='sp_image_container_big'></div>");
+								arena.append("<div id='sp_image"+data[i].id+"' class='sp_image_container_big'></div>");
                             else
                                 arena.append("<div id='sp_image"+data[i].id+"' class='sp_image_container'></div>");
 
@@ -137,6 +140,8 @@
                     pane2.fadeOut(hideT,function(){
                         api1.getContentPane().empty();
                         pane1.fadeIn(hideT);
+
+                        //loadSponsorSet("src/getPlatinumSponsors.php","sp_platinum","Sponsors",1);
                         
                         loadSponsorSet("src/getPlatinumSponsors.php","sp_platinum","Platinum Sponsors",1);
                         loadSponsorSet("src/getGoldSponsors.php","sp_gold","Gold Sponsors",1);

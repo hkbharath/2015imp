@@ -15,6 +15,7 @@ class category{
 $result = array();
 
 if($_SERVER['REQUEST_METHOD']=="GET" && isset($_GET['type'])){
+
 	$db = new dbConnector();
 	$link = $db->getAgent();
 
@@ -35,7 +36,10 @@ if($_SERVER['REQUEST_METHOD']=="GET" && isset($_GET['type'])){
 		array_push($result, $newcat);
 	}
 
-	$db->close($link);
+	$db->close();
 	echo json_encode($result);
+}
+else{
+	echo "not yes entered";
 }
 ?>
