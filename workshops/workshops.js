@@ -1,3 +1,4 @@
+
 (function(){
 	var height =$(window).height(),
 	width = $(window).width(),

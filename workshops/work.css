@@ -1,0 +1,127 @@
+div{
+border-color:white;
+border-radius:10px;
+}
+@font-face{
+	font-family: alienlang;
+	src:url(../start/alienleagueexpand.ttf);
+}
+
+@font-face{
+	font-family: gsan;
+	src:url(../start/GeosansLight.ttf);
+}
+html{
+	background:rgba(1, 1, 2, 1) url('../images/background.png') no-repeat center center fixed;
+	background-size: cover;
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	overflow:hidden;
+}
+
+
+.header{border:3px solid #03879C;
+border-radius:10px;
+color:white;
+}
+
+.m_wrap{
+    margin-top:3%;
+	border-radius:10px;
+	background-color:rgba(0,0,0,0.4);
+border:3px solid #03879C ;
+float:right;
+height:85%;
+width:65%;
+color:white;
+
+}
+.s_wrap 
+{border-radius:10px;
+background-color:rgba(0,0,0,0.6);
+border:3px solid #03879C ;
+margin-top:3%;
+float:left;
+height:85%;
+width:28%;
+
+}
+.s_content a
+{
+font-family:gsan;
+font-size:1.5em;
+line-height:300%;
+
+}
+.s_content
+{
+	text-align:center;
+}
+#d1:hover
+{font-weight:bold;
+	border:1px solid white;
+}
+.s_head h1
+{
+	font-family:alienlang;
+	text-align:center;
+	font-size:2.5em;
+}
+a{
+color:white;
+text-decoration:none;
+}
+
+.s_head{
+font-family:gsan;
+color:white;
+
+}
+hr{
+
+border:2px solid white;
+width:94%;
+border-radius:10px;
+
+
+}
+.m_head
+{
+	font-family:alienlang;
+	line-height:0%;
+	margin-left:3%
+
+
+}
+
+.m_head h1
+{
+	font-family:alienlang;
+	font-size:35px;
+
+
+}
+
+.m_head h3
+{
+	font-family:alienlang;
+	font-size:20px;
+
+
+}
+.m_content p
+{
+	text-align:center;
+}
+
+.m_content 
+{
+	font-family:gsan;
+	font-size:1.2em;
+}
+
+.m_wrap{
+overflow:scroll;
+}
+
