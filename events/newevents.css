@@ -18,12 +18,14 @@ html{
   	-moz-background-size: cover;
   	-o-background-size: cover;
   	overflow:hidden;
+	line-height:99%;
+	
 }
 
 
-.header{border:3px solid #03879C;
-border-radius:10px;
+.header{
 color:white;
+
 }
 
 .ls_wrap
@@ -43,10 +45,11 @@ width:20%;
 	background-color:rgba(0,0,0,0.4);
 border:3px solid #03879C ;
 height:87%;
-width:53%;
+width:52%;
 float:left;
 color:white;
 margin-left:3%;
+line-height:100%;
 
 }
 .rs_wrap
@@ -63,7 +66,7 @@ margin-left:3%;
 .ls_content a ,.rs_content a
 {
 font-family:gsan;
-font-size:1.5em;
+font-size:1.4em;
 line-height:300%;
 
 }
@@ -79,7 +82,7 @@ line-height:300%;
 {
 	font-family:alienlang;
 	text-align:center;
-	font-size:2.5em;
+	font-size:2.3em;
 }
 
 a{
@@ -90,6 +93,7 @@ text-decoration:none;
 .ls_head,.rs_head{
 font-family:gsan;
 color:white;
+f
 
 }
 
@@ -139,5 +143,13 @@ border-radius:10px;
 	font-family:gsan;
 	font-size:1.2em;
 	margin-left:3%;
+}
+.header{
+
+font-family:alienlang ;
+font-size:3em ;
+text-align:center;
+margin-top:2%;
+
 }
 

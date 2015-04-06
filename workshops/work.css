@@ -21,8 +21,7 @@ html{
 }
 
 
-.header{border:3px solid #03879C;
-border-radius:10px;
+.header{
 color:white;
 }
 
@@ -32,7 +31,7 @@ color:white;
 	background-color:rgba(0,0,0,0.4);
 border:3px solid #03879C ;
 float:right;
-height:85%;
+height:82%;
 width:65%;
 color:white;
 
@@ -43,7 +42,7 @@ background-color:rgba(0,0,0,0.6);
 border:3px solid #03879C ;
 margin-top:3%;
 float:left;
-height:85%;
+height:82%;
 width:28%;
 
 }
@@ -123,5 +122,13 @@ border-radius:10px;
 
 .m_wrap{
 overflow:scroll;
+}
+
+
+.header{
+
+font-family:alienlang ;
+font-size:4em ;
+text-align:center;
 }
 

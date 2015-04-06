@@ -21,8 +21,7 @@ html{
 }
 
 
-.header{border:3px solid #03879C;
-border-radius:10px;
+.header{
 color:white;
 }
 
@@ -32,7 +31,7 @@ color:white;
 	background-color:rgba(0,0,0,0.4);
 border:3px solid #03879C ;
 float:right;
-height:85%;
+height:82%;
 width:65%;
 color:white;
 
@@ -43,15 +42,15 @@ background-color:rgba(0,0,0,0.6);
 border:3px solid #03879C ;
 margin-top:3%;
 float:left;
-height:85%;
+height:82%;
 width:28%;
 
 }
 .s_content a
 {
 font-family:gsan;
-font-size:1.5em;
-line-height:220%;
+font-size:1.28em;
+line-height:300%;
 
 }
 .s_content
@@ -59,9 +58,8 @@ line-height:220%;
 	text-align:center;
 }
 #d1:hover
-{
+{font-weight:bold;
 	border:1px solid white;
-	font-weight:bold;
 }
 .s_head h1
 {
@@ -99,7 +97,7 @@ border-radius:10px;
 .m_head h1
 {
 	font-family:alienlang;
-	font-size:34px;
+	font-size:35px;
 
 
 }
@@ -111,14 +109,26 @@ border-radius:10px;
 
 
 }
-
 .m_content p
 {
-	font-family:gsan;
 	text-align:center;
+}
+
+.m_content 
+{
+	font-family:gsan;
 	font-size:1.2em;
 }
 
 .m_wrap{
 overflow:scroll;
 }
+
+
+.header{
+
+font-family:alienlang ;
+font-size:4em ;
+text-align:center;
+}
+

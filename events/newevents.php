@@ -19,7 +19,8 @@ $id=1;
 </script>
 
 <link rel="stylesheet" type="text/stylesheet" href="newevents.css" />  
-<div class="header">IMPETUS
+<div class="header">IMPETUS 2015
+
 </div>
 
 <div class = 'ls_wrap'>

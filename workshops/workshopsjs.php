@@ -24,7 +24,7 @@ $id=1;
 
 <link rel="stylesheet" type="text/stylesheet" href="css/perfect-scrollbar.css" />
  
-<div class="header">IMPETUS
+<div class="header">IMPETUS 2015
 </div>
 <div class = 's_wrap'>
 <div class='s_head'>
@@ -70,7 +70,7 @@ $.get("../src/getWorkshops.php",function(data){
 					if(data[i].id == "<?php echo $id ?>")
 					{		m_head.append("<h1>"+data[i].name+"</h1>"+"<br>"+"<h3>"+data[i].date+" At "+data[i].time+"</h3>");
 						m_content.append("<hr>"+'<img style="width:66%;margin-left:18%" src="'+data[i].picpath+'"/>');
-						m_content.append("<p style='overflow:auto'>"+data[i].topic+"</p>");
+						m_content.append("<p>"+data[i].topic+"</p>");
 						
 				}
                 }		
