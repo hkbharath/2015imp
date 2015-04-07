@@ -111,23 +111,23 @@
                     });
                     $('.ev_form_container #ev_form').submit(function(e){
                         
-                        if( $('input[name = "name"').val() === ""){
+                        if( $('input[name = "name"]').val() === ""){
                             //e.preventDefault();
                             notifyError('Please Give us Valid Name');
                             return false;
                         }
-                        if( $('input[name = "college"').val() === ""){
+                        if( $('input[name = "college"]').val() === ""){
                             //e.preventDefault();
                             notifyError('Please Give us Valid College Name');
                             return false;
                         }
-                        var chk = $('input[name = "user_email"').val();
+                        var chk = $('input[name = "user_email"]').val();
                         if( chk === "" || !validateEmail(chk) ){
                             //e.preventDefault();
                             notifyError('Please Give us Valid Email-Id');
                             return false;
                         }
-                        chk = $('input[name = "user_phone"').val();
+                        chk = $('input[name = "user_phone"]').val();
                         if( chk === "" || isNaN(chk) || chk.length != 10){
                             //e.preventDefault();
                             notifyError('Please Give us Valid 10-digit Phone Number withput any spaces');
